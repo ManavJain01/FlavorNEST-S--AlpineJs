@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --theme-default: #e76f0a;
+    --top-header-color: #1a9400;
+    --dashboard-theme-color: #4c4c4c;
+  }
+}

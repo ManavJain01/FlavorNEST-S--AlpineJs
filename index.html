@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <script src="./store/app.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <title>Food Ordering Website</title>
+  </head>
+  <body>
+    <div x-data="router()" class="min-h-screen bg-gray-100">
+      <!-- Header -->
+      <div class="fixed top-0 left-0 bg-white flex flex-col w-lvw py-2">
+        <div
+          x-data="{ open : false }"
+          class="flex items-center gap-5 justify-around px-10 relative"
+        >
+          <!-- <h1 class="text-2xl">FoodNEST(S)</h1> -->
+          <img class="w-[9rem]" src="./assets/images/image.png" alt="" />
+          <section class="flex items-center px-2 border rounded-xl shadow-sm">
+            <!-- <i class="fa fa-map-marker text-red-600"></i> -->
+            <i class="fa-solid fa-location-dot text-default"></i>
+            <input
+              placeholder="Lucknow, Uttar Pradesh, India"
+              class="text-sm w-[15rem] px-2 py-4 outline-none"
+              type="text"
+            />
+            <p>|</p>
+            <i class="fa fa-search text-default mx-2"></i>
+            <input
+              placeholder="Search"
+              class="text-sm w-[15rem] px-2 py-2 outline-none"
+              type="text"
+            />
+          </section>
+          <button @click="open=!open" class="text-gray-500 ml-auto">
+            Quick Links
+          </button>
+          <ul
+            x-show="open"
+            @click.outside="open = false"
+            x-transition
+            class="absolute bg-white w-[160px] shadow-md py-1 top-[3rem] right-[20rem] mt-2 rounded border z-10"
+          >
+            <li>
+              <a class="py-1 px-2 hover:bg-gray-200 flex items-center" href="#">
+                Career</a
+              >
+            </li>
+            <li>
+              <a class="py-1 px-2 hover:bg-gray-200 flex items-center" href="#">
+                Career</a
+              >
+            </li>
+          </ul>
+          <p class="text-gray-500">En Language</p>
+          <p class="text-gray-500">My Account</p>
+          <div class="flex flex-col border border-black">
+            <a href="#/login">Login</a>
+            <a href="#">Register</a>
+          </div>
+        </div>
+        <button
+          class="text-orange-600 ml-auto px-10"
+          onclick="navigateTo('/cart')"
+        >
+          Cart
+        </button>
+
+        <div id="navbar"></div>
+      </div>
+
+      <div x-data="{ main}" class="min-h-screen"></div>
+
+      <!-- Footer -->
+      <div
+        class="mt-5 flex flex-col gap-5"
+        :class="{ 'bg-black text-white': isDark, 'bg-white text-black': !isDark }"
+      >
+        <div class="flex items-center justify-around">
+          <section class="flex flex-col gap-3">
+            <h1 class="font-bold text-xl">Quick Links</h1>
+            <p class="text-gray-500">Careers</p>
+            <p class="text-gray-500">Vendor Registration</p>
+            <p class="text-gray-500">Privacy Policies</p>
+            <p class="text-gray-500">Terms and Conditions</p>
+            <p class="text-gray-500">FoodNEST(S)</p>
+            <p class="text-gray-500">FAQ's</p>
+          </section>
+
+          <section class="flex flex-col gap-3">
+            <h1 class="font-bold text-xl">Contact Us</h1>
+            <p class="text-gray-500">Lucknow</p>
+            <p class="text-gray-500">7307180059</p>
+            <p class="text-gray-500">contact@foodnests.com</p>
+          </section>
+
+          <section class="flex flex-col gap-3">
+            <h1 class="font-bold text-xl">Find Our App On Mobile</h1>
+          </section>
+
+          <section class="flex flex-col gap-3">
+            <h1 class="font-bold text-xl">Payment Methods</h1>
+            <h2 class="font-bold text-xl">Keep In Touch</h2>
+          </section>
+        </div>
+
+        <span class="mx-auto">2023-24 | All rights reserved</span>
+      </div>
+    </div>
+  </body>
+</html>
