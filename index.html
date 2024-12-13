@@ -9,6 +9,9 @@
     ></script>
 
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    
+    <!-- Importing local script files -->
+    <script src="./src/routes/routes.js"></script>
     <script src="./src/store/store.js"></script>
     <link
       rel="stylesheet"
@@ -21,21 +24,38 @@
 
     <title>🍔Food Ordering Website👌</title>
   </head>
-  <body>
-    <div x-data="router()" class="min-h-lvh bg-gray-100 flex flex-col justify-end">
+  <body x-data="globalStore()" x-init="init()" :class="darkMode ? 'bg-black text-white' : 'bg-gray-100 text-black'">
+    <div x-data="router()" class="min-h-lvh w-lvw flex flex-col justify-between overflow-x-hidden">
       <!-- Header -->
       <div 
         x-data="headerComponent()" 
-        x-init="loadHeader()" 
-        class="header-container"
+        x-init="loadHeader()"
       ></div>
-      <!--  -->
+      
+      <!-- Modules -->
+      <div class="flex-1 mt-52 px-10">
+        <!-- Home Page -->
+        <div x-show="currentPage === 'home'" x-ref="home"></div>
+      
+        <!-- Cart Page -->
+        <div x-show="currentPage === 'cart'" x-ref="cart"></div>
+      </div> 
+      
+      <!-- Dark Theme -->
+      <div class="fixed top-[420px] right-0">
+        <button 
+          @click="toggleTheme"
+          class="p-3 rounded-full rounded-r-none shadow-lg"
+          :class="darkMode ? 'bg-white text-black' : 'bg-orange-500 text-white'"
+        >
+          <i class="fa" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
+        </button>
+      </div>
 
       <!-- Footer -->
       <div 
         x-data="footerComponent()" 
-        x-init="loadFooter()" 
-        class="footer-container"
+        x-init="loadFooter()"
       ></div>
     </div>
 
