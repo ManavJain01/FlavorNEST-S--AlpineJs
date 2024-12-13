@@ -1,0 +1,38 @@
+<!-- Top Product bar -->
+<div 
+  x-data="{ 
+    products: [
+      {id:1, title:'Chinese'},
+      {id:2, title:'Firangi Khana peena (Continental Dishes)'}, 
+      {id:3, title:'Cookies'}, 
+      {id:4, title:'Hot and Cold Beverages'}, 
+      {id:5, title:'Regional Flavours'}, 
+      {id:6, title:'Subscriptions (Tiffin/Meals)'}, 
+      {id:7, title:'Combos'},
+      {id:8, title:'Rice Treats'},
+      {id:9, title:'Thali'}, 
+      {id:10, title:'Party Mania'}, 
+      {id:11, title:'Rotis & Parathas'},
+      {id:12, title:'All Time Nashta'},
+      {id:13, title:'Dry Curries'},
+      {id:14, title:'Biryanis & More'},
+      {id:15, title:'Veg Curries'},
+      {id:16, title:'Non-Veg Curries'},
+      {id:17, title:'Dal Darbar'},
+      {id:18, title:'Sattvic & Vrat Food'},
+      {id:19, title:'Snacks & Chakna'},
+      {id:20, title:'Cakes & Bakes'}
+    ]
+  }"
+  class="tracking-wider text-sm text-gray-500 flex gap-5 px-10">
+  <template x-for="product in products" :key="product.id" class="">
+    <div 
+      class=""
+    >
+      <h3 
+        x-text="product.title" 
+        class="font-semibold"
+      ></h3>
+    </div>
+  </template>
+</div>
