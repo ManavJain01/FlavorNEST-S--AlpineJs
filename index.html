@@ -24,8 +24,8 @@
 
     <title>🍔Food Ordering Website👌</title>
   </head>
-  <body x-data="globalStore()" x-init="init()" :class="darkMode ? 'bg-black text-white' : 'bg-gray-100 text-black'">
-    <div x-data="router()" class="min-h-lvh w-lvw flex flex-col justify-between overflow-x-hidden">
+  <body x-data="globalStore()" x-init="init()" class="min-h-lvh w-lvw overflow-x-hidden" :class="darkMode ? 'bg-black text-white' : 'bg-gray-100 text-black'">
+    <div x-data="router()" class="flex flex-col justify-between">
       <!-- Header -->
       <div 
         x-data="headerComponent()" 
@@ -39,6 +39,9 @@
       
         <!-- Cart Page -->
         <div x-show="currentPage === 'cart'" x-ref="cart"></div>
+
+        <!-- Product Card Page -->
+        <div x-show="currentPage === 'productCard'" x-ref="productCard"></div>
       </div> 
       
       <!-- Dark Theme -->

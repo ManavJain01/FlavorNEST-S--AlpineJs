@@ -676,6 +676,10 @@ video {
   margin-top: 0.75rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .mt-52 {
   margin-top: 13rem;
 }
@@ -689,17 +693,32 @@ video {
   height: 1.5rem;
 }
 
-.size-8 {
-  width: 2rem;
-  height: 2rem;
-}
-
 .h-4 {
   height: 1rem;
 }
 
+.h-\[10rem\] {
+  height: 10rem;
+}
+
+.h-\[15rem\] {
+  height: 15rem;
+}
+
+.h-\[35rem\] {
+  height: 35rem;
+}
+
+.max-h-\[15rem\] {
+  max-height: 15rem;
+}
+
 .min-h-lvh {
   min-height: 100lvh;
+}
+
+.w-12 {
+  width: 3rem;
 }
 
 .w-4 {
@@ -718,8 +737,25 @@ video {
   width: 170px;
 }
 
+.w-\[17rem\] {
+  width: 17rem;
+}
+
+.w-\[30rem\] {
+  width: 30rem;
+}
+
+.w-\[40rem\] {
+  width: 40rem;
+}
+
 .w-\[9rem\] {
   width: 9rem;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .w-lvw {
@@ -743,6 +779,10 @@ video {
   align-items: center;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .justify-between {
   justify-content: space-between;
 }
@@ -751,12 +791,20 @@ video {
   justify-content: space-around;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-3 {
   gap: 0.75rem;
 }
 
 .gap-5 {
   gap: 1.25rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .overflow-x-hidden {
@@ -784,6 +832,14 @@ video {
   border-width: 1px;
 }
 
+.border-l {
+  border-left-width: 1px;
+}
+
+.border-r {
+  border-right-width: 1px;
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
@@ -808,6 +864,10 @@ video {
   padding: 0.75rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
@@ -820,6 +880,16 @@ video {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .py-2 {
@@ -837,9 +907,22 @@ video {
   padding-bottom: 1rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-sm {
@@ -852,8 +935,17 @@ video {
   line-height: 1.75rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-bold {
   font-weight: 700;
+}
+
+.font-medium {
+  font-weight: 500;
 }
 
 .font-semibold {
@@ -931,13 +1023,75 @@ video {
   transition-duration: 150ms;
 }
 
+/* Apply custom scrollbar styling */
+
+::-webkit-scrollbar {
+  width: 10px;
+  /* Width of the vertical scrollbar */
+  height: 10px;
+  /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Color of the scrollbar thumb */
+  border-radius: 5px;
+  /* Round edges */
+  border: 2px solid transparent;
+  /* Space around the thumb */
+  background-clip: padding-box;
+  /* Prevent border from overlapping */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  /* Track color */
+  border-radius: 5px;
+  /* Round edges for the track */
+}
+
+/* Hover effect for the scrollbar thumb */
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+  /* Darker color when hovered */
+}
+
+/* Firefox-specific scrollbar styles */
+
+* {
+  scrollbar-width: thin;
+  /* Thin scrollbar */
+  scrollbar-color: darkorange darkorange;
+  /* Thumb color and track color */
+}
+
+.hover\:border:hover {
+  border-width: 1px;
+}
+
 .hover\:border-l-4:hover {
   border-left-width: 4px;
+}
+
+.hover\:border-orange-500:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(249 115 22 / var(--tw-border-opacity, 1));
 }
 
 .hover\:border-orange-600:hover {
   --tw-border-opacity: 1;
   border-color: rgb(234 88 12 / var(--tw-border-opacity, 1));
+}
+
+.hover\:bg-black:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-gradient-to-r:hover {
@@ -952,4 +1106,14 @@ video {
 
 .hover\:to-orange-100:hover {
   --tw-gradient-to: #ffedd5 var(--tw-gradient-to-position);
+}
+
+.hover\:text-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }

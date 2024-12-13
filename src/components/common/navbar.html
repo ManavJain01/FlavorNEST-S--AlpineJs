@@ -24,7 +24,8 @@
       {id:20, title:'Cakes & Bakes'}
     ]
   }"
-  class="tracking-wider text-sm text-gray-500 flex gap-5 px-10">
+  class="tracking-wider text-sm text-gray-500 flex gap-5 px-10"
+  :class="darkMode ? 'bg-black' : 'bg-white'">
   <template x-for="product in products" :key="product.id" class="">
     <div 
       class=""

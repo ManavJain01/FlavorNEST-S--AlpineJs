@@ -1,4 +1,6 @@
-<div class="p-5">
-  <h1 class="text-2xl font-bold">Your Shopping Cart</h1>
-  <p class="mt-3">Your selected items will appear here.</p>
+<div class="text-gray-500 flex flex-col justify-center items-center gap-2 pb-10">
+  <img src="../../../assets/images/empty_cart.png" alt="empty cart">
+  <h1 class="text-2xl">Your Cart Is Empty!</h1>
+  <p class="mt-3">Add items to it now.</p>
+  <button @click="currentPage = 'home'" class="text-sm text-white bg-orange-500 px-4 py-2 hover:border hover:border-orange-500 rounded-full" :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'">CONTINUE SHOPPING</button>
 </div>

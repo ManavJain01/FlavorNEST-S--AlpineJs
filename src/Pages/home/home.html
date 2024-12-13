@@ -1,4 +1,23 @@
-<div class="p-5">
+<div x-data="{ 
+  foods: [
+    { item: 'Regular Paneer Combo', vendor: 'The Miash Kitchen', price: '130', img: 'https://images.royoorders.com/insecure/fit/260/260/ce/0/plain/https://s3.us-west-2.amazonaws.com/royoorders2.0-assets/82b5bc/prods/ng9UPMCp5zrTxkHy38AdZb4jN8SFy5FkqhaQgpRp.jpg@webp', product_details: 'Delicious Regular paneer Combo which included 08 Medium size Paneer Sabji spl + Rice or 4 Roti/ 2 Pc Partatha.' },
+    { item: 'Hakka Noodles Paneer', vendor: 'Wild Street Fast Food', price: '55', img: 'https://images.royoorders.com/insecure/fit/260/260/ce/0/plain/https://s3.us-west-2.amazonaws.com/royoorders2.0-assets/82b5bc/prods/Qfgvnm8wNrTEilaMjGVin6agcCKP8qrp3uSGoCj7.jpg@webp', product_details: 'Paneer Hakka noodles is a Chinese preparation where boiled noodles are stir fried with sauces and vegetables or meats. A hakka noodle is made from unleavened dough( rice or wheat flour) that is cooked in a boiling liquid. Hakka Noodles paneer is made by boiling hakka noodles and then blending them with sauted veggies,Paneer , soya sauce & spices' },
+    { item: 'Veg Manchurian (Dry)', vendor: 'Wild Street Fast Food', price: '56', img: 'https://images.royoorders.com/insecure/fit/260/260/ce/0/plain/https://s3.us-west-2.amazonaws.com/royoorders2.0-assets/82b5bc/prods/WRGRvTPIQkFIedVnwXLKyCBGIPkkzyan5UHQ80Vl.jpg@webp', product_details: 'Veg Manchurian (Dry) is the Indo Chinese starter dish where fried vegetable balls are coated with thick, flavorful sauce. Since this is the dry version there is no gravy.' }
+  ],
+}" class="">
   <h1 class="text-2xl font-bold">Welcome to the Home Page</h1>
   <p class="mt-3">Here you'll find all our amazing products!</p>
+  <button @click="currentPage = 'productCard'">CLick me</button>
+  <ul class="flex gap-5 mt-5">
+    <template x-for="food in foods" :key="food.item">
+      <li @click="viewProduct(food)" class="mt-2 p-4 border rounded-xl">
+        <img :src="food.img || ''" alt="product image" class="h-[15rem] w-[17rem] rounded-xl">
+        <h2 class="text-sm font-bold" x-text="food.item"></h2>
+        <p class="text-xs text-gray-400" x-text="food.vendor"></p>
+        <p class="text-orange-600 font-medium">
+          ₹ <span x-text="food.price"></span>
+        </p>
+      </li>
+    </template>
+  </ul>
 </div>
