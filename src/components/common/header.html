@@ -1,0 +1,126 @@
+<div class="fixed top-0 left-0 flex flex-col w-lvw py-2">
+  <div
+    x-data="{ open : false, openAccount:false }"
+    class="flex items-center gap-5 justify-around px-10 relative bg-white py-3"
+  >
+    <!-- <h1 class="text-2xl">FoodNEST(S)</h1> -->
+    <button @click="currentPage = 'home'">
+      <img class="w-[9rem]" src="./assets/images/image.png" alt="" />
+    </button>
+    <section class="flex items-center px-2 border rounded-xl shadow-md">
+      <!-- <i class="fa fa-map-marker text-red-600"></i> -->
+      <i class="fa-solid fa-location-dot text-default"></i>
+      <input
+        placeholder="Lucknow, Uttar Pradesh, India"
+        class="text-sm w-[15rem] px-2 py-4 outline-none"
+        :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
+        type="text"
+      />
+      <div
+        x-data="{
+        open: false,
+        accept() {  
+            console.log('accepted')
+        }
+      }"
+      ></div>
+      <i class="fa-solid text-gray-400 mr-7 fa-caret-down -ml-10"></i>
+      <p>|</p>
+      <i class="fa fa-search text-default text-sm mx-2"></i>
+      <input
+        placeholder="Search"
+        class="text-sm w-[15rem] px-2 py-2 outline-none"
+        :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
+        type="text"
+      />
+    </section>
+    <button @click="open=!open" class="text-gray-500 ml-auto flex">
+      Quick Links
+      <svg
+        class="h-4 w-4 mt-1.5 transition-all"
+        :class="{'rotate-90': open}"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        />
+      </svg>
+    </button>
+    <ul
+      x-show="open"
+      @click.outside="open = false"
+      x-transition
+      class="absolute bg-white w-[170px] shadow-md top-[2rem] right-[20rem] mt-2 rounded border z-10"
+    >
+      <li
+        class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+      >
+        <a class="items-center" href="#"> Careers</a>
+      </li>
+      <li
+        class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+      >
+        <a class="items-center" href="#"> Vendor Registration</a>
+      </li>
+      <li
+        class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+      >
+        <a class="items-center" href="#"> Privacy Policy</a>
+      </li>
+      <li
+        class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+      >
+        <a class="items-center" href="#"> Term and Conditions-Foodnests</a>
+      </li>
+      <li
+        class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+      >
+        <a class="items-center" href="#"> FAQs</a>
+      </li>
+    </ul>
+    <p class="text-gray-500">
+      <i class="fa-solid fa-language mx-2"></i>En Language
+    </p>
+    <button @click="openAccount=!openAccount" class="text-gray-500">
+      <i class="fa-solid fa-user text-gray-500 mx-2"></i>My Account
+    </button>
+    <ul
+      x-show="openAccount"
+      @click.outside="openAccount = false"
+      x-transition
+      class="absolute bg-white w-[130px] shadow-md right-[2rem] top-10 mt-2 rounded border z-10"
+    >
+      <li
+        class="py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+      >
+        <button @click="currentPage = 'login'" class="px-2" href="#">
+          Login
+        </button>
+      </li>
+      <li
+        class="py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+      >
+        <button @click="currentPage = 'register'" class="px-2" href="#">
+          Register
+        </button>
+      </li>
+    </ul>
+  </div>
+  <button @click="currentPage = 'cart'" class="text-orange-600 ml-auto px-10">
+    <i class="fa-solid fa-cart-shopping text-xl"></i>
+  </button>
+
+  <div
+    id="navbar"
+    x-data="navbarLoader()"
+    x-init="fetchNavbar()"
+    x-html="navbarContent"
+  ></div>
+</div>

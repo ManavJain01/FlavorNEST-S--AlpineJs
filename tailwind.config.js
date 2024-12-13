@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     "./index.html", // Directly include the index.html file
-    "./components/**/*.{html,js}", // Include all HTML and JS files in the components folder
+    "./**/*.{html,js}", // Include all HTML and JS files in the components folder
   ],
   theme: {
     extend: {
