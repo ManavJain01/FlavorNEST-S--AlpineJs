@@ -1,5 +1,7 @@
 const homePage = "/src/Pages/home/home.html";
 const cartPage = "/src/Pages/cart/cart.html";
+const loginPage = "/src/Pages/Login/login.htm";
+const registerPage = "/src/Pages/Login/register.html";
 const productCardPage = "/src/components/shared/productCard.html";
 
 document.addEventListener('alpine:init', () => {
@@ -13,9 +15,19 @@ document.addEventListener('alpine:init', () => {
         localStorage.setItem("currentPage", page);
         const homeContainer = this.$refs.home;
         const cartContainer = this.$refs.cart;
+        const loginContainer = this.$refs.login;
+        const registerContainer = this.$refs.register;
         const productCardContainer = this.$refs.productCard;
         
-        const pagePath = page === 'cart' ? cartPage : page === 'productCard' ? productCardPage : homePage;
+        const pagePath =
+        page === "cart"
+          ? cartPage
+          : page === "login"
+          ? loginPage
+          : page === "register"
+          ? registerPage
+          : page === 'productCard' ? productCardPage
+          : homePage;
         const res = await fetch(pagePath);
         const html = await res.text();
         
@@ -23,6 +35,10 @@ document.addEventListener('alpine:init', () => {
           homeContainer.innerHTML = html;
         } else if (page === 'cart') {
           cartContainer.innerHTML = html;
+        } else if (page === "login") {
+          loginContainer.innerHTML = html;
+        } else if (page === "register") {
+          registerContainer.innerHTML = html;
         } else if (page === 'productCard') {
           productCardContainer.innerHTML = html;
         }
@@ -34,9 +50,8 @@ document.addEventListener('alpine:init', () => {
     init() {
       // Initially load the home page
       this.loadComponent(this.currentPage);
-
       // Watch for changes in currentPage and load the appropriate component
-      this.$watch('currentPage', (value) => {
+      this.$watch("currentPage", (value) => {
         this.loadComponent(value);
       });
     },

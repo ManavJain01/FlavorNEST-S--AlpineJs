@@ -8,8 +8,6 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    
     <!-- Importing local script files -->
     <script src="./src/routes/routes.js"></script>
     <script src="./src/store/store.js"></script>
@@ -24,29 +22,32 @@
 
     <title>🍔Food Ordering Website👌</title>
   </head>
-  <body x-data="globalStore()" x-init="init()" class="min-h-lvh w-lvw overflow-x-hidden" :class="darkMode ? 'bg-black text-white' : 'bg-gray-100 text-black'">
+  <body x-data="globalStore()" x-init="init()" class="min-h-lvh w-lvw overflow-x-hidden" :class="darkMode ? 'bg-black text-white transition-all duration-500' : 'bg-gray-100 text-black transition-all duration-500'">
     <div x-data="router()" class="flex flex-col justify-between">
       <!-- Header -->
-      <div 
-        x-data="headerComponent()" 
-        x-init="loadHeader()"
-      ></div>
-      
+      <div x-data="headerComponent()" x-init="loadHeader()"></div>
+
       <!-- Modules -->
-      <div class="flex-1 mt-52 px-10">
+      <div class="flex-1 mt-56 px-10">
         <!-- Home Page -->
         <div x-show="currentPage === 'home'" x-ref="home"></div>
-      
+
         <!-- Cart Page -->
         <div x-show="currentPage === 'cart'" x-ref="cart"></div>
 
         <!-- Product Card Page -->
-        <div x-show="currentPage === 'productCard'" x-ref="productCard"></div>
-      </div> 
-      
+        <div x-show="currentPage === 'productCard'" x-ref="productCard"></div> 
+        
+        <!-- Login Page -->
+        <div x-show="currentPage === 'login'" x-ref="login"></div>
+        
+        <!-- Register Page -->
+        <div x-show="currentPage === 'register'" x-ref="register"></div>
+      </div>
+
       <!-- Dark Theme -->
       <div class="fixed top-[420px] right-0">
-        <button 
+        <button
           @click="toggleTheme"
           class="p-3 rounded-full rounded-r-none shadow-lg"
           :class="darkMode ? 'bg-white text-black' : 'bg-orange-500 text-white'"
@@ -56,10 +57,7 @@
       </div>
 
       <!-- Footer -->
-      <div 
-        x-data="footerComponent()" 
-        x-init="loadFooter()"
-      ></div>
+      <div x-data="footerComponent()" x-init="loadFooter()"></div>
     </div>
 
     <script src="./src/js/component_Injection.js"></script>
