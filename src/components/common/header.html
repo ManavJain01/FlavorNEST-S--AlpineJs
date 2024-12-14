@@ -1,4 +1,7 @@
-<div class="fixed top-0 left-0 flex flex-col w-lvw py-2" :class="darkMode ? 'bg-black' : 'bg-white'">
+<div
+  class="fixed top-0 left-0 flex flex-col w-lvw py-2"
+  :class="darkMode ? 'bg-black' : 'bg-white'"
+>
   <div
     x-data="{ open : false, openAccount:false }"
     class="flex items-center gap-5 justify-around px-10 relative py-3"
@@ -57,7 +60,8 @@
       x-show="open"
       @click.outside="open = false"
       x-transition
-      class="absolute bg-white w-[170px] shadow-md top-[2rem] right-[20rem] mt-2 rounded border z-10"
+      class="absolute w-[170px] shadow-md top-[3rem] right-[20rem] mt-2 rounded border z-10"
+      :class="darkMode ? 'bg-black' : 'bg-white'"
     >
       <li
         class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
@@ -95,7 +99,8 @@
       x-show="openAccount"
       @click.outside="openAccount = false"
       x-transition
-      class="absolute bg-white w-[130px] shadow-md right-[2rem] top-10 mt-2 rounded border z-10"
+      class="absolute w-[130px] shadow-md right-[2rem] top-10 mt-2 rounded border z-10"
+      :class="darkMode ? 'bg-black' : 'bg-white'"
     >
       <li
         class="py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"

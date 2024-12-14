@@ -9,6 +9,11 @@
     ></script>
 
     <!-- Importing local script files -->
+    <script
+      type="module"
+      differ
+      src="./src/Pages/Firebase/firebaseauth.js"
+    ></script>
     <script src="./src/routes/routes.js"></script>
     <script src="./src/store/store.js"></script>
     <link
@@ -22,7 +27,15 @@
 
     <title>🍔Food Ordering Website👌</title>
   </head>
-  <body x-data="globalStore()" x-init="init()" class="min-h-lvh w-lvw overflow-x-hidden" :class="darkMode ? 'bg-black text-white transition-all duration-500' : 'bg-gray-100 text-black transition-all duration-500'">
+  <body
+    x-data="{
+    ...globalStore(),
+    ...registerHandler()
+  }"
+    x-init="init()"
+    class="min-h-lvh w-lvw overflow-x-hidden"
+    :class="darkMode ? 'bg-black text-white transition-all duration-500' : 'bg-gray-100 text-black transition-all duration-500'"
+  >
     <div x-data="router()" class="flex flex-col justify-between">
       <!-- Header -->
       <div x-data="headerComponent()" x-init="loadHeader()"></div>
@@ -36,13 +49,24 @@
         <div x-show="currentPage === 'cart'" x-ref="cart"></div>
 
         <!-- Product Card Page -->
-        <div x-show="currentPage === 'productCard'" x-ref="productCard"></div> 
-        
+        <div x-show="currentPage === 'productCard'" x-ref="productCard"></div>
+
         <!-- Login Page -->
         <div x-show="currentPage === 'login'" x-ref="login"></div>
-        
+
         <!-- Register Page -->
+        <!-- <script type="module" src="./src/Pages/Login/register.js"></script> -->
         <div x-show="currentPage === 'register'" x-ref="register"></div>
+        <button
+          @click="registerUser({
+          email : 'sushil',
+          phone : 'sushil',
+          name:'sushil',
+          password : 'sushil'
+        })"
+        >
+          click me
+        </button>
       </div>
 
       <!-- Dark Theme -->
