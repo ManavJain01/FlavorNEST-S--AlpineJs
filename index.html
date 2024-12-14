@@ -3,19 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Importing local files -->
+    <script type="module">
+      import mainEntry from "./main.js"
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("mainEntry", mainEntry);
+      });
+    </script>
+    
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    
+    <!-- Importing Alpine.JS -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <!-- Importing local script files -->
-    <script
-      type="module"
-      differ
-      src="./src/Pages/Firebase/firebaseauth.js"
-    ></script>
-    <script src="./src/routes/routes.js"></script>
-    <script src="./src/store/store.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
@@ -23,22 +27,18 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./assets/css/style.css" />
 
     <title>🍔Food Ordering Website👌</title>
   </head>
   <body
-    x-data="{
-    ...globalStore(),
-    ...registerUser()
-  }"
+    x-data="mainEntry()"
     x-init="init()"
     class="min-h-lvh w-lvw overflow-x-hidden"
     :class="darkMode ? 'bg-black text-white transition-all duration-500' : 'bg-gray-100 text-black transition-all duration-500'"
   >
-    <div x-data="router()" class="flex flex-col justify-between">
+    <div class="flex flex-col justify-between">
       <!-- Header -->
-      <div x-data="headerComponent()" x-init="loadHeader()"></div>
+      <div x-init="headerComponent()"></div>
 
       <!-- Modules -->
       <div class="flex-1 mt-56 px-10">
@@ -57,17 +57,6 @@
         <!-- Register Page -->
         <!-- <script type="module" src="./src/Pages/Login/register.js"></script> -->
         <div x-show="currentPage === 'register'" x-ref="register"></div>
-
-        <button
-          @click="registerUser({
-          email : 'sushil',
-          phone : 'sushil',
-          name:'sushil',
-          password : 'sushil'
-        })"
-        >
-          click me
-        </button>
 
         <!-- Vendor Registration -->
         <div
@@ -107,9 +96,7 @@
       </div>
 
       <!-- Footer -->
-      <div x-data="footerComponent()" x-init="loadFooter()"></div>
+      <div x-init="footerComponent()"></div>
     </div>
-
-    <script src="./src/js/component_Injection.js"></script>
   </body>
 </html>

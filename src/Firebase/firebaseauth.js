@@ -21,10 +21,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Define the Alpine.js data for register
-document.addEventListener("alpine:init", () => {
-  console.log("working.....firebaseAuth");
-
-  Alpine.data("registerHandler", () => ({
+export default function registerHandler(){
+  return { 
     name: "",
     phone: "",
     email: "",
@@ -32,14 +30,19 @@ document.addEventListener("alpine:init", () => {
     referralCode: "",
     message: "",
 
-    async registerUser(props) {
+    async registerUser(userData) {
       try {
+        const { email, password, phone, name } = userData;
+        
         // Validate inputs
-        console.log(props);
-
-        if (!this.name || !this.phone || !this.email || !this.password) {
+        if (!name || !phone || !email || !password) {
           this.message = "All fields are required.";
           return;
+        } else {
+          this.name = name;
+          this.email = email;
+          this.password = password;
+          this.phone = phone;
         }
 
         // Create user with Firebase Auth
@@ -49,7 +52,7 @@ document.addEventListener("alpine:init", () => {
           this.password
         );
         const user = userCredential.user;
-
+        
         // Show success message
         this.message = `Welcome, ${this.name}! Your account has been created.`;
         console.log("User registered:", user);
@@ -57,6 +60,6 @@ document.addEventListener("alpine:init", () => {
         this.message = error.message;
         console.error("Error registering user:", error);
       }
-    },
-  }));
-});
+    }
+  };
+};

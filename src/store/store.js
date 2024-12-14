@@ -1,4 +1,4 @@
-function globalStore() {
+export default function globalStore() {
   return {
     darkMode: false,
     cart: [],

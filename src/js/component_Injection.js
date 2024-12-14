@@ -1,8 +1,11 @@
-// Header Function
-function headerComponent() {
+export default function injectComponents() {
   return {
     headerContent: '',
-    async loadHeader() {
+    navbarContent: '',
+    footerContent: '',
+    
+    // Header Function
+    async headerComponent() {
       try {
         const response = await fetch('./src/components/common/header.html');
         if (!response.ok) {
@@ -14,14 +17,9 @@ function headerComponent() {
         console.error('Error loading header:', error);
       }
     },
-  };
-}
 
-// Footer Function
-function footerComponent() {
-  return {
-    footerContent: '',
-    async loadFooter() {
+    // Footer Function
+    async footerComponent() {
       try {
         const response = await fetch('./src/components/common/footer.html');
         if (!response.ok) {
@@ -33,18 +31,11 @@ function footerComponent() {
         console.error('Error loading footer:', error);
       }
     },
-  };
-}
 
-function navbarLoader() {
-  return {
-    navbarContent: '',
-    async fetchNavbar() {
+    // Navbar Function
+    async navbarComponent() {
       const response = await fetch('./src/components/common/navbar.html');
       this.navbarContent = await response.text();
     },
-    init() {
-      this.fetchNavbar();
-    },
-  };
+  }
 }

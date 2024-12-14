@@ -9,8 +9,9 @@ const careersPage = "/src/Pages/Informational pages/careers.html";
 const faqsPage = "/src/Pages/Informational pages/FAQs.html";
 const privacyPoliciesPage = "/src/Pages/Informational pages/privacy_policies.html";
 const TermsAndConditionsPage = "/src/Pages/Informational pages/Terms_&_Conditions.html";
-document.addEventListener('alpine:init', () => {
-  Alpine.data('router', () => ({
+
+export default function router(){
+  return {
     currentPage: localStorage.getItem("currentPage") || 'home', // Default page is home
     productCard: JSON.parse(localStorage.getItem("productCard")) || {},
     
@@ -84,5 +85,5 @@ document.addEventListener('alpine:init', () => {
       this.productCard = product;
       this.currentPage = 'productCard'; // Change page to productCard
     },
-  }));
-});
+  };
+};
