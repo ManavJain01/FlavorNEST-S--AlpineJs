@@ -7,7 +7,7 @@
   <div class="flex gap-5">
     <div x-data="{  quantity: 1, foods: [
       { item: 'Regular Paneer Combo', vendor: 'The Miash Kitchen', price: '130', img: 'https://images.royoorders.com/insecure/fit/260/260/ce/0/plain/https://s3.us-west-2.amazonaws.com/royoorders2.0-assets/82b5bc/prods/ng9UPMCp5zrTxkHy38AdZb4jN8SFy5FkqhaQgpRp.jpg@webp', product_details: 'Delicious Regular paneer Combo which included 08 Medium size Paneer Sabji spl + Rice or 4 Roti/ 2 Pc Partatha.' }
-      ]}" x-init="init()" class="flex gap-5">
+      ]}" class="flex gap-5">
       <ul class="flex gap-5 mt-5">
         <template x-for="food in foods" :key="food.item">
           <li class="flex items-center gap-5 p-4 border rounded-xl">
@@ -58,5 +58,4 @@
       <p class="flex justify-between pb-3 border-y">Amount Payable <span class="font-bold">₹ 291.46</span></p>
     </div>
   </div>
-
 </div>

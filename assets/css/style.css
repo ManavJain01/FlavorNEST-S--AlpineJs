@@ -594,6 +594,7 @@ video {
   }
 }
 
+<<<<<<< HEAD
 .sr-only {
   position: absolute;
   width: 1px;
@@ -629,10 +630,13 @@ video {
   visibility: visible !important;
 }
 
+=======
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 .visible {
   visibility: visible;
 }
 
+<<<<<<< HEAD
 .invisible {
   visibility: hidden;
 }
@@ -645,6 +649,8 @@ video {
   position: static;
 }
 
+=======
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 .fixed {
   position: fixed;
 }
@@ -866,6 +872,7 @@ video {
   display: flex;
 }
 
+<<<<<<< HEAD
 .inline-flex {
   display: inline-flex;
 }
@@ -922,10 +929,13 @@ video {
   display: inline-grid;
 }
 
+=======
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 .contents {
   display: contents;
 }
 
+<<<<<<< HEAD
 .list-item {
   display: list-item;
 }
@@ -934,6 +944,8 @@ video {
   display: none;
 }
 
+=======
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 .size-6 {
   width: 1.5rem;
   height: 1.5rem;
@@ -993,6 +1005,10 @@ video {
 
 .w-24 {
   width: 6rem;
+}
+
+.w-32 {
+  width: 8rem;
 }
 
 .w-4 {
@@ -1436,6 +1452,7 @@ video {
   flex-direction: column;
 }
 
+<<<<<<< HEAD
 .flex-col-reverse {
   flex-direction: column-reverse;
 }
@@ -1540,14 +1557,19 @@ video {
   align-content: stretch;
 }
 
+=======
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 .items-start {
   align-items: flex-start;
 }
 
+<<<<<<< HEAD
 .items-end {
   align-items: flex-end;
 }
 
+=======
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 .items-center {
   align-items: center;
 }
@@ -1584,6 +1606,7 @@ video {
   justify-content: space-around;
 }
 
+<<<<<<< HEAD
 .justify-evenly {
   justify-content: space-evenly;
 }
@@ -1606,6 +1629,10 @@ video {
 
 .justify-items-stretch {
   justify-items: stretch;
+=======
+.gap-1 {
+  gap: 0.25rem;
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 }
 
 .gap-2 {
@@ -1982,6 +2009,7 @@ video {
   border-bottom-right-radius: 0px;
 }
 
+<<<<<<< HEAD
 .rounded-s {
   border-start-start-radius: 0.25rem;
   border-end-start-radius: 0.25rem;
@@ -2027,6 +2055,11 @@ video {
 
 .rounded-tr {
   border-top-right-radius: 0.25rem;
+=======
+.rounded-t-2xl {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 }
 
 .border {
@@ -2369,6 +2402,11 @@ video {
   padding-bottom: 1rem;
 }
 
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -2377,8 +2415,13 @@ video {
   padding-bottom: 0.75rem;
 }
 
+<<<<<<< HEAD
 .pb-4 {
   padding-bottom: 1rem;
+=======
+.pb-40 {
+  padding-bottom: 10rem;
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 }
 
 .pl-5 {
@@ -2444,6 +2487,11 @@ video {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .text-lg {
@@ -2591,6 +2639,11 @@ video {
 .text-red-600 {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
+
+.text-sky-500 {
+  --tw-text-opacity: 1;
+  color: rgb(14 165 233 / var(--tw-text-opacity, 1));
 }
 
 .text-white {
@@ -2813,6 +2866,7 @@ video {
   outline-style: solid;
 }
 
+<<<<<<< HEAD
 .outline-dashed {
   outline-style: dashed;
 }
@@ -2864,6 +2918,8 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow) !important;
 }
 
+=======
+>>>>>>> 8181e07537dd8fc393cac0c8312cff1cd62cf9da
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -3006,10 +3062,8 @@ video {
   /* Color of the scrollbar thumb */
   border-radius: 5px;
   /* Round edges */
-  border: 2px solid transparent;
-  /* Space around the thumb */
   background-clip: padding-box;
-  /* Prevent border from overlapping */
+  /* Prevent overlapping */
 }
 
 ::-webkit-scrollbar-track {
@@ -3031,7 +3085,7 @@ video {
 * {
   scrollbar-width: thin;
   /* Thin scrollbar */
-  scrollbar-color: darkorange darkorange;
+  scrollbar-color: darkorange white;
   /* Thumb color and track color */
 }
 
@@ -3077,6 +3131,10 @@ video {
 
 .hover\:border-l-4:hover {
   border-left-width: 4px;
+}
+
+.hover\:border-none:hover {
+  border-style: none;
 }
 
 .hover\:border-orange-500:hover {

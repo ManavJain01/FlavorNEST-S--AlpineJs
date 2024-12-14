@@ -19,8 +19,7 @@
 ::-webkit-scrollbar-thumb {
   background-color: #888; /* Color of the scrollbar thumb */
   border-radius: 5px; /* Round edges */
-  border: 2px solid transparent; /* Space around the thumb */
-  background-clip: padding-box; /* Prevent border from overlapping */
+  background-clip: padding-box; /* Prevent overlapping */
 }
 
 ::-webkit-scrollbar-track {
@@ -36,5 +35,5 @@
 /* Firefox-specific scrollbar styles */
 * {
   scrollbar-width: thin; /* Thin scrollbar */
-  scrollbar-color: darkorange darkorange; /* Thumb color and track color */
+  scrollbar-color: darkorange white; /* Thumb color and track color */
 }
