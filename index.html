@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Importing local files -->
     <script type="module">
-      import mainEntry from "./main.js"
+      import mainEntry from "./main.js";
       document.addEventListener("alpine:init", () => {
         Alpine.data("mainEntry", mainEntry);
       });
     </script>
-    
+
     <link rel="stylesheet" href="./assets/css/style.css" />
-    
+
     <!-- Importing Alpine.JS -->
     <script
       defer
@@ -55,7 +55,6 @@
         <div x-show="currentPage === 'login'" x-ref="login"></div>
 
         <!-- Register Page -->
-        <!-- <script type="module" src="./src/Pages/Login/register.js"></script> -->
         <div x-show="currentPage === 'register'" x-ref="register"></div>
 
         <!-- Vendor Registration -->
