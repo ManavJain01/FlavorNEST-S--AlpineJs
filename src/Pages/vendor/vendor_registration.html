@@ -1,0 +1,113 @@
+<div class="flex flex-col gap-3">
+  <h1 class="font-bold text-3xl">Vendor Registration</h1>
+
+  <p class="font-bold">Vendor Registration section</p>
+
+  <p>To register your best makes for the people of the city to relish and get WOWed by your gourmet makes.</p>
+
+  <p>Please fill in the section to get registered</p>
+
+  <!-- Personal Details -->
+  <div class="flex flex-col">
+    <p class="font-bold text-xl bg-gray-200 py-3 px-5 rounded-t-2xl">PERSONAL DETAILS</p>
+
+    <!-- Name, Phone Number, Title and Email -->
+    <div class="flex items-center gap-3 px-5 py-5">
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_name">Full Name</label>
+        <input type="text" name="vendor_registration_name" class="px-5 py-2 border outline-none">
+      </section>
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_phone">Phone No.</label>
+        <input type="text" name="vendor_registration_phone" placeholder="81234 56789" class="px-5 py-2 border outline-none">
+      </section>
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_title">Title</label>
+        <input type="text" name="vendor_registration_title" placeholder="Mr./Miss/Mrs." class="px-5 py-2 border outline-none">
+      </section>
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_email">Email</label>
+        <input type="email" name="vendor_registration_email" class="px-5 py-2 border outline-none">
+      </section>
+    </div>
+
+    <!-- Password and Confirm Password -->
+    <div class="flex items-center gap-3 px-5 py-3">
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_password">Password</label>
+        <input type="password" name="vendor_registration_password" class="px-5 py-2 border outline-none">
+      </section>
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_confirmpassword">Confirm Password</label>
+        <input type="password" name="vendor_registration_confirmpassword" placeholder="81234 56789" class="px-5 py-2 border outline-none">
+      </section>
+    </div>
+  </div>
+
+  <!-- Banking Details -->
+  <div class="flex flex-col">
+    <p class="font-bold text-xl bg-gray-200 py-3 px-5 rounded-t-2xl">BANKING DETAILS</p>
+
+    <!-- Account Name, Bank Name, and IFSC Code -->
+    <div class="flex items-center gap-3 px-5 py-5">
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_accountname">Account Name</label>
+        <input type="text" name="vendor_registration_accountname" placeholder="Account Name" class="px-5 py-2 border outline-none">
+      </section>
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_bankname">Bank Name</label>
+        <input type="text" name="vendor_registration_bankname" placeholder="Bank Name" class="px-5 py-2 border outline-none">
+      </section>
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_ifsccode">IFSC Code</label>
+        <input type="text" name="vendor_registration_ifsccode" placeholder="IFSC Code" class="px-5 py-2 border outline-none">
+      </section>
+    </div>
+  </div>
+
+  <!-- Vendor Details -->
+  <div class="flex flex-col">
+    <p class="font-bold text-xl bg-gray-200 py-3 px-5 rounded-t-2xl">VENDOR DETAILS</p>
+
+    <!-- Vendors Name, Vendor Type -->
+    <div class="flex items-center gap-3 px-5 py-5">
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_vendorname">Vendors Name</label>
+        <input type="text" name="vendor_registration_vendorname" class="px-5 py-2 border outline-none">
+      </section>
+      <!-- <section class="flex flex-col gap-2">
+        <select name="" id=""></select>
+      </section> -->
+    </div>
+
+    <!-- Zipcode, City, State/Province, and Country -->
+    <div class="flex items-center gap-3 px-5 py-5">
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_zipcode">Zipcode</label>
+        <input type="text" name="vendor_registration_zipcode" class="px-5 py-2 border outline-none">
+      </section>
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_city">City</label>
+        <input type="text" name="vendor_registration_city" class="px-5 py-2 border outline-none">
+      </section>
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_state">State/Province</label>
+        <input type="text" name="vendor_registration_state" class="px-5 py-2 border outline-none">
+      </section>
+      <section class="flex flex-col gap-2">
+        <label for="vendor_registration_country">Vendors Name</label>
+        <input type="text" name="vendor_registration_country" class="px-5 py-2 border outline-none">
+      </section>
+    </div>
+  </div>
+
+  <!-- Accept Terms -->
+  <div class="flex items-center gap-1">
+    <span>I accept the</span>
+    <button @click="currentPage = 'terms_conditions'" class="text-sky-500">Terms & Conditions</button>
+    <span>and have read the</span>
+    <button @click="currentPage = 'privacy_policies'" class="text-sky-500">Privacy Policy.</button>
+  </div>
+
+  <button class="text-sm text-white bg-orange-500 px-4 py-2 hover:border hover:border-orange-500 rounded-full" :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'">Submit</button>
+</div>

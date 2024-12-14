@@ -62,27 +62,27 @@
       <li
         class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
       >
-        <a class="items-center" href="#"> Careers</a>
+        <button @click="currentPage = 'careers'" class="items-center" href="#"> Careers</button>
       </li>
       <li
         class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
       >
-        <a class="items-center" href="#"> Vendor Registration</a>
+        <button @click="currentPage = 'vendor_registration'" class="items-center"> Vendor Registration</button>
       </li>
       <li
         class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
       >
-        <a class="items-center" href="#"> Privacy Policy</a>
+        <button @click="currentPage = 'privacy_policies'" class="items-center"> Privacy Policy</button>
+      </li>
+      <li
+        class="py-3 /px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+      >
+        <button @click="currentPage = 'terms_conditions'" class="items-center"> Term and Conditions-FoodNEST(S)</button>
       </li>
       <li
         class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
       >
-        <a class="items-center" href="#"> Term and Conditions-Foodnests</a>
-      </li>
-      <li
-        class="py-3 px-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
-      >
-        <a class="items-center" href="#"> FAQs</a>
+        <button @click="currentPage = 'faqs'" class="items-center"> FAQs</button>
       </li>
     </ul>
     <p class="text-gray-500">
