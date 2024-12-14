@@ -1,3 +1,42 @@
-<div class="flex items-center">
-  <h1 class="text-center">Register</h1>
+<div class="flex flex-col gap-5">
+  <h1 class="text-2xl text-center">New Customer</h1>
+
+  <!-- Name and Phone Number -->
+  <div class="flex gap-5 mx-auto">
+    <div class="flex flex-col">
+      <label for="register_name">Full Name</label>
+      <input type="text" name="register_name" placeholder="Full Name" class="py-2 px-3 border outline-none">
+    </div>
+
+    <div class="flex flex-col">
+      <label for="register_phone">Phone No.</label>
+      <input type="number" name="register_phone" placeholder="Phone No." class="py-2 px-3 border outline-none">
+    </div>
+  </div>
+
+  <!-- Email and Password -->
+  <div class="flex gap-5 mx-auto">
+    <div class="flex flex-col">
+      <label for="register_email">Email</label>
+      <input type="email" name="register_email" placeholder="Email" class="py-2 px-3 border outline-none">
+    </div>
+
+    <div class="flex flex-col">
+      <label for="register_password">Password</label>
+      <input type="password" name="register_password" placeholder="Enter Your Password" class="py-2 px-3 border outline-none">
+    </div>
+  </div>
+
+  <p class="mx-auto">I accept the Terms & Conditions and have read the Privacy Policy</p>
+
+  <p class="mx-auto">I consent to receive SMS messages for operational purposes, including one-time passwords (OTPs) for identity verification and updates related to your account.</p>
+
+  <p class="mx-auto">Note* This is also required to send sms for login and signup Purpose also.</p>
+
+  <div class="flex flex-col mx-auto">
+    <label for="register_referral">Referral Code</label>
+    <input type="text" name="register_referral" placeholder="Referral Code" class="py-2 px-3 border outline-none">
+  </div>
+
+  <button class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full" :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'">Create An Account</button>
 </div>

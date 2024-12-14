@@ -7,10 +7,9 @@
 }" class="">
   <h1 class="text-2xl font-bold">Welcome to the Home Page</h1>
   <p class="mt-3">Here you'll find all our amazing products!</p>
-  <button @click="currentPage = 'productCard'">CLick me</button>
   <ul class="flex gap-5 mt-5">
     <template x-for="food in foods" :key="food.item">
-      <li @click="viewProduct(food)" class="mt-2 p-4 border rounded-xl">
+      <li @click="viewProduct(food)" class="mt-2 p-4 border rounded-xl cursor-pointer">
         <img :src="food.img || ''" alt="product image" class="h-[15rem] w-[17rem] rounded-xl">
         <h2 class="text-sm font-bold" x-text="food.item"></h2>
         <p class="text-xs text-gray-400" x-text="food.vendor"></p>
