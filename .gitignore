@@ -2,4 +2,5 @@
 node_modules
 demoHtml.html
 .env
-
+setupdatabase.js
+adminSecretKey.json

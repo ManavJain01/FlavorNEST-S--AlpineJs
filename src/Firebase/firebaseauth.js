@@ -1,6 +1,3 @@
-// src/Pages/Firebase/firebaseauth.js
-// import dotenv from "dotenv";
-// dotenv.config();
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import {
   getAuth,
@@ -27,6 +24,8 @@ const firebaseConfig = {
   appId: "1:1009676022229:web:0032add8ea38e099b84d5c",
   measurementId: "G-D1ZMDGLV1X",
 };
+
+// console.log(firebaseConfig);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -72,15 +71,17 @@ export default function registerHandler() {
             password
           );
           const user = userCredential.user;
+          console.log("password : ", password);
+          console.log("referral : ", referralCode);
 
           // Store user details in Firestore
           await setDoc(doc(db, "users", user.uid), {
             name: name,
             email: email,
-            phone: phone,
-            referralCode: referralCode,
-            password: password,
-            createdAt: new Date(),
+            phone_number: phone,
+            referral_code: referralCode,
+            // password: password,
+            created_at: new Date(),
           });
 
           // window.location.href=

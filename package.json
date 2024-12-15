@@ -6,6 +6,7 @@
     "tail": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch"
   },
   "dependencies": {
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^13.0.1"
   }
 }
