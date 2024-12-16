@@ -26,77 +26,76 @@
       integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-      />
-      
-      <title>🍔Food Ordering Website👌</title>
-    </head>
-    <body
+    />
+
+    <title>🍔Food Ordering Website👌</title>
+  </head>
+  <body
     x-data="$store.applicationStore"
     x-init="init()"
     class="min-h-lvh w-lvw overflow-x-hidden"
     :class="darkMode ? 'bg-black text-white transition-all duration-500' : 'bg-gray-100 text-black transition-all duration-500'"
-    >
+  >
     <div class="flex flex-col justify-between">
       <!-- Header -->
       <div x-init="headerComponent()"></div>
-      
+
       <!-- Modules -->
       <div class="flex-1 mt-64 px-10">
         <!-- Home Page -->
         <div x-show="currentPage === 'home'" x-ref="home"></div>
-        
+
         <!-- Cart Page -->
         <div x-show="currentPage === 'cart'" x-ref="cart"></div>
-        
+
         <!-- Product Card Page -->
         <div x-show="currentPage === 'productCard'" x-ref="productCard"></div>
 
         <!-- Login Page -->
         <div x-show="currentPage === 'login'" x-ref="login"></div>
-        
+
         <!-- Register Page -->
         <div x-show="currentPage === 'register'" x-ref="register"></div>
-        
+
         <!-- Vendor Registration -->
         <div
-        x-show="currentPage === 'vendor_registration'"
-        x-ref="vendor_registration"
+          x-show="currentPage === 'vendor_registration'"
+          x-ref="vendor_registration"
         ></div>
-        
+
         <!-- Informational Pages -->
         <!-- Careers Page -->
         <div x-show="currentPage === 'careers'" x-ref="careers"></div>
-        
+
         <!-- FAQs Page -->
         <div x-show="currentPage === 'faqs'" x-ref="faqs"></div>
-        
+
         <!-- Privacy Policies Page -->
         <div
-        x-show="currentPage === 'privacy_policies'"
-        x-ref="privacy_policies"
+          x-show="currentPage === 'privacy_policies'"
+          x-ref="privacy_policies"
         ></div>
-        
+
         <!-- Terms And Conditions Page -->
         <div
-        x-show="currentPage === 'terms_conditions'"
-        x-ref="terms_conditions"
+          x-show="currentPage === 'terms_conditions'"
+          x-ref="terms_conditions"
         ></div>
       </div>
-      
+
       <!-- Dark Theme -->
       <div class="fixed top-[420px] right-0">
         <button
           @click="toggleTheme"
           class="p-3 rounded-full rounded-r-none shadow-lg"
           :class="darkMode ? 'bg-white text-black' : 'bg-orange-500 text-white'"
-          >
+        >
           <i class="fa" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
         </button>
       </div>
-      
+
       <!-- Footer -->
       <div x-init="footerComponent()"></div>
     </div>
-    <!-- <script src="./src/Pages/Login/loginhandlar.js"></script> -->
   </body>
 </html>

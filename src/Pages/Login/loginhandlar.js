@@ -1,4 +1,4 @@
-export default function loginHandler() {  
+export default function loginHandler() {
   return {
     identifier: "",
     password: "",
@@ -11,7 +11,7 @@ export default function loginHandler() {
     checkInputType() {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       this.isEmail = emailRegex.test(this.identifier);
-      console.log("Value in input field : ", this.identifier);
+      // console.log("Value in input field : ", this.identifier);
     },
 
     // Simulate sending OTP
@@ -19,16 +19,24 @@ export default function loginHandler() {
     async sendOtp() {
       if (!this.identifier) {
         alert("Please enter your phone number.");
-
         return;
       }
-      const phoneNumber = "+91 " + this.identifier.slice(0, 4) + " " + this.identifier.slice(4, 7) + " " + this.identifier.slice(7, 10);
-        
+      const phoneNumber =
+        "+91 " +
+        this.identifier.slice(0, 4) +
+        " " +
+        this.identifier.slice(4, 7) +
+        " " +
+        this.identifier.slice(7, 10);
+
       // Access the store
-      const myStore = Alpine.store('applicationStore');
+      const myStore = Alpine.store("applicationStore");
 
       // Simulate an API call to send OTP
-      await myStore().loginUserViaPhone(phoneNumber);
+      console.log("final phone number : ", phoneNumber);
+
+      await myStore().loginUserViaPhone({ phoneNumber });
+
       console.log(`Sending OTP to ${this.identifier}`);
       setTimeout(() => {
         this.otpSent = true; // OTP sent successfully
@@ -37,7 +45,10 @@ export default function loginHandler() {
     },
 
     // Handle login functionality
-    login() {
+    async login() {
+      const myStore = Alpine.store("applicationStore");
+      console.log("identifier :", this.identifier);
+
       if (!this.identifier) {
         alert("Please enter your email or phone number.");
         return;
@@ -55,6 +66,11 @@ export default function loginHandler() {
 
       // Perform login logic (e.g., call your API)
       if (this.isEmail) {
+        await myStore().loginUserViaEmailPassword({
+          email: this.identifier,
+          password: this.password,
+        });
+
         console.log(
           `Logging in with email: ${this.identifier} and password: ${this.password}`
         );

@@ -3,6 +3,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithPhoneNumber,
+  signInWithEmailAndPassword,
   RecaptchaVerifier,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
@@ -27,12 +28,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
+export { auth };
 // Define the Alpine.js data for register
 export default function registerHandler() {
   return {
     // Your Firebase configuration
-    firebaseConfig : {
+    firebaseConfig: {
       apiKey: "AIzaSyA_nYH23XJB6YS-DdRDepPiQ8azY9rGYRg",
       authDomain: "foodnests-db.firebaseapp.com",
       projectId: "foodnests-db",
@@ -48,14 +49,14 @@ export default function registerHandler() {
     initRecaptcha() {
       // Initialize reCAPTCHA verifier
       this.recaptchaVerifier = new RecaptchaVerifier(
+        auth,
         "recaptcha-container",
         {
           size: "invisible", // Optional: Make it invisible
           callback: function (response) {
             console.log("reCAPTCHA verified:", response);
           },
-        },
-        auth
+        }
       );
     },
 
@@ -120,7 +121,9 @@ export default function registerHandler() {
           email,
           password
         );
+
         const user = userCredential.user;
+        console.log("userCredential ,....", userCredential);
 
         // Show success message
         this.message = `Welcome back, ${user.email}! You are now logged in.`;
@@ -132,11 +135,10 @@ export default function registerHandler() {
     },
 
     async loginUserViaPhone(userData) {
+      console.log("userData : ", userData);
+      const phone = userData.phoneNumber;
       try {
-        const { phone } = userData;
-
         console.log("in viaPhone:", phone);
-        
 
         // Validate phone number
         if (!phone) {
@@ -144,11 +146,10 @@ export default function registerHandler() {
           return;
         }
 
-        // Initialize reCAPTCHA if not done already
+        // Initialize reCAPTCHA
         if (!this.recaptchaVerifier) {
           this.initRecaptcha();
         }
-
         // Send OTP to phone
         const confirmationResult = await signInWithPhoneNumber(
           auth,
@@ -156,6 +157,7 @@ export default function registerHandler() {
           this.recaptchaVerifier
         );
         this.confirmationResult = confirmationResult;
+        console.log("confirmation !!!: ", this.confirmationResult);
 
         // Prompt user to enter OTP
         this.message =
@@ -170,7 +172,14 @@ export default function registerHandler() {
       try {
         // Handle the OTP input
         const verificationCode = otp; // The OTP the user enters
-        await this.confirmationResult.confirm(verificationCode);
+        const userCredential = await this.confirmationResult.confirm(
+          verificationCode
+        );
+        console.log("user credential !! : ", userCredential);
+
+        // Successfully logged in
+        const user = userCredential.user;
+        console.log("User successfully verified and logged in:", user);
 
         this.message = "Phone number successfully verified and logged in!";
       } catch (error) {
