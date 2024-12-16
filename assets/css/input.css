@@ -37,3 +37,15 @@
   scrollbar-width: thin; /* Thin scrollbar */
   scrollbar-color: darkorange white; /* Thumb color and track color */
 }
+
+/* Hide spinners in Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide spinners in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

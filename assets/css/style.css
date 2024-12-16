@@ -835,10 +835,6 @@ video {
   margin-top: 1.25rem;
 }
 
-.mt-56 {
-  margin-top: 14rem;
-}
-
 .mt-64 {
   margin-top: 16rem;
 }
@@ -3099,6 +3095,20 @@ video {
   /* Thin scrollbar */
   scrollbar-color: darkorange white;
   /* Thumb color and track color */
+}
+
+/* Hide spinners in Chrome, Safari, Edge, Opera */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide spinners in Firefox */
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 @media (min-width: 640px) {

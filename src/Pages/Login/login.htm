@@ -1,16 +1,100 @@
-<div class="flex justify-around">
+<!-- <div class="flex justify-around">
   <div class="flex flex-col items-center justify-center gap-3">
     <h1 class="font-semibold text-2xl">Login To Your Account</h1>
 
-    <input type="text" name="email_phone" placeholder="Email or Phone Number" class="px-3 py-2 border rounded-full outline-none">
-    
-    <button class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full" :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'">Continue</button>
+    <input
+      type="text"
+      name="email_phone"
+      placeholder="Email or Phone Number"
+      class="px-3 py-2 border rounded-full outline-none"
+    />
+
+    <button
+      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+    >
+      Continue
+    </button>
   </div>
   <div class="flex flex-col items-center justify-center gap-3">
     <h1 class="font-semibold text-2xl">Login To Your Account</h1>
-    
+
     <p>Create a free account and join us!</p>
-    
-    <button class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full" :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'">Create An Account</button>
+
+    <button
+      @click="currentPage = 'register',
+      
+      checkInputType()
+
+      "
+      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+    >
+      Create An Account
+    </button>
+  </div>
+</div> -->
+
+<div class="flex justify-around">
+  <!-- Login Section -->
+  <div class="flex flex-col items-center justify-center gap-3">
+    <h1 class="font-semibold text-2xl">Login To Your Account</h1>
+
+    <!-- Input for Email or Phone -->
+    <input
+      type="text"
+      name="email_phone"
+      placeholder="Email or Phone Number"
+      class="px-3 py-2 border rounded-full outline-none"
+      x-model="identifier"
+      @input="checkInputType"
+    />
+
+    <!-- Conditional Input for Password -->
+    <template x-if="isEmail">
+      <input
+        type="password"
+        name="password"
+        placeholder="Enter Password"
+        class="px-3 py-2 border rounded-full outline-none"
+        x-model="password"
+      />
+    </template>
+
+    <!-- Conditional Input for OTP -->
+    <template x-if="!isEmail && identifier && otpSent">
+      <input
+        type="text"
+        name="otp"
+        placeholder="Enter OTP"
+        class="px-3 py-2 border rounded-full outline-none"
+        x-model="otp"
+      />
+    </template>
+
+    <div id="recaptcha-container"></div>
+    <!-- Login Button -->
+    <button
+      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+      @Click="sendOtp()"
+    >
+      Continue
+    </button>
+  </div>
+
+  <!-- Registration Section -->
+  <div class="flex flex-col items-center justify-center gap-3">
+    <h1 class="font-semibold text-2xl">Create Your Account</h1>
+
+    <p>Create a free account and join us!</p>
+
+    <button
+      @click="currentPage = 'register'"
+      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+    >
+      Create An Account
+    </button>
   </div>
 </div>
