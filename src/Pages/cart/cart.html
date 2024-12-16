@@ -1,5 +1,5 @@
 <div
-  class="text-gray-500 flex flex-col justify-center items-center gap-2 pb-10"
+  class="text-gray-500 pb-10"
   x-data="{ cart : cart , total : setTotal()}"
 >
   <div
@@ -17,67 +17,103 @@
       CONTINUE SHOPPING
     </button>
   </div>
-  <div x-show="cart.length>0" class="flex gap-5">
-    <div class="flex gap-5">
-      <ul class="flex flex-wrap gap-5 mt-5">
-        <template x-for="food in cart" :key="food.item">
-          <li
-            x-data="{  quantity: food.quantity || 1,
-            increment(){
-              food.quantity = food.quantity + 1;
-              this.quantity = this.quantity + 1;
-              total = setTotal();
-            },
-            decrement(){
-              food.quantity = food.quantity<=0 ? 0:food.quantity-1 ;
-              this.quantity = this.quantity<=0 ? 0:this.quantity-1 ;
-              total = setTotal();
-            } }"
-            class="flex items-center gap-5 p-4 border rounded-xl"
-          >
-            <img
-              :src="food.img || ''"
-              alt="product image"
-              class="h-24 w-24 rounded-xl"
-            />
 
-            <div class="flex flex-col gap-5">
-              <span class="text-xl">Combos</span>
-              <h2 class="text-sm font-bold" x-text="food.item"></h2>
-            </div>
+  <div x-show="cart.length>0" class="flex justify-around gap-5">
+    <div class="flex flex-col gap-3 w-full">
+      <p class="font-semibold text-2xl" :class="darkMode ? 'text-white' : 'text-black'">Shopping Cart</p>
+      <table class="h-fit border-collapse border border-gray-300">
+        <!-- Table Head -->
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-4 text-left">Product Details</th>
+            <th class="p-4 text-left">Price</th>
+            <th class="p-4 text-left">Quantity</th>
+            <th class="p-4 text-left">Total</th>
+            <th class="p-4"></th>
+          </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody>
+          <template x-for="food in cart" :key="food.item">
+            <tr
+              x-data="{ quantity: food.quantity || 1,
+                increment(){
+                  this.quantity++;
+                  food.quantity = this.quantity;
+                  total = setTotal();
+                },
+                decrement(){
+                  if(this.quantity <= 1){
+                    removeFromCart(food);
+                  }else{
+                    this.quantity--;
+                    food.quantity = this.quantity;
+                    total = setTotal();
+                  }
+                } }"
+              class="border-b hover:bg-gray-50"
+            >
+              <!-- Product Details -->
+              <td class="p-4 flex items-center gap-4">
+                <img
+                  :src="food.img || ''"
+                  alt="Product image"
+                  class="h-24 w-24 rounded"
+                />
+                <div>
+                  <span class="text-sm text-gray-600" x-text="food.category"></span>
+                  <h2 class="text-lg font-bold" x-text="food.item"></h2>
+                </div>
+              </td>
+              <!-- Price -->
+              <td class="p-4 text-gray-600">₹ <span x-text="food.price"></span></td>
+              <!-- Quantity -->
+              <td class="p-4">
+                <div class="w-fit border border-orange-500 rounded">
+                  <button
+                    @click="decrement()"
+                    class="px-2 py-1 border-r border-orange-500"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    min="0"
+                    x-model="quantity"
+                    class="w-12 text-center bg-transparent outline-none"
+                  />
+                  <button
+                    @click="increment()"
+                    class="px-2 py-1 border-l border-orange-500"
+                  >
+                    +
+                  </button>
+                </div>
+              </td>
+              <!-- Total -->
+              <td class="p-4 font-semibold text-gray-800">
+                ₹ <span x-text="food.price * quantity"></span>
+              </td>
+              <!-- Remove Button -->
+              <td class="p-4 text-center">
+                <button
+                  @click="removeFromCart(food)"
+                  class="text-red-500 hover:text-red-700"
+                >
+                  <i class="fa fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </template>
 
-            <p class="text-gray-500">₹ <span x-text="food.price"></span></p>
-
-            <div class="w-fit border border-orange-500 rounded">
-              <button
-                @click="decrement()"
-                class="font-bold text-xl px-3 py-1 border-r"
-              >
-                -
-              </button>
-              <input
-                type="number"
-                name="quantity_in_cart"
-                min="0"
-                x-model="quantity"
-                @change="console.log('Quantity changed to:', quantity)"
-                class="w-12 pl-5 outline-none"
-              />
-              <button
-                @click="increment()"
-                class="font-bold text-xl px-3 py-1 border-l"
-              >
-                +
-              </button>
-            </div>
-
-            <p>₹ <span x-text="food.price * quantity"></span></p>
-
-            <i class="text-xl fa-light fa-trash-can"></i>
-          </li>
-        </template>
-      </ul>
+          <tr class="flex justify-between p-5">
+            <td :class="darkMode ? 'text-white' : 'text-black'">Sub Total:</td>
+            <td>₹<span x-text="total"></span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
 
     <div class="flex flex-col gap-3 p-5 shadow-md rounded-xl">
       <h1 class="font-semibold text-2xl">Order Summary</h1>

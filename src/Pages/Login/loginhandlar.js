@@ -1,21 +1,4 @@
-// import registerHandler from "../../Firebase/firebaseauth";
-// const authentication = registerHandler();
-// console.log(authentication);
-
-document.addEventListener("DOMContentLoaded", () => {
-  const mainentry = document.getElementById("meriId");
-  console.log(mainentry);
-
-  if (mainentry && mainentry.__x) {
-    const alpineData = mainentry.__x.$data;
-    console.log(alpineData);
-    // Now you can safely call functions or access properties
-  } else {
-    console.error("Alpine.js component is not initialized yet.");
-  }
-});
-
-function loginHandler() {
+export default function loginHandler() {  
   return {
     identifier: "",
     password: "",
@@ -33,15 +16,19 @@ function loginHandler() {
 
     // Simulate sending OTP
 
-    sendOtp() {
+    async sendOtp() {
       if (!this.identifier) {
         alert("Please enter your phone number.");
 
         return;
       }
-      const phoneNumber = "+91 " + this.identifier;
+      const phoneNumber = "+91 " + this.identifier.slice(0, 4) + " " + this.identifier.slice(4, 7) + " " + this.identifier.slice(7, 10);
+        
+      // Access the store
+      const myStore = Alpine.store('applicationStore');
+
       // Simulate an API call to send OTP
-      authentication.loginUserViaPhone(phoneNumber);
+      await myStore().loginUserViaPhone(phoneNumber);
       console.log(`Sending OTP to ${this.identifier}`);
       setTimeout(() => {
         this.otpSent = true; // OTP sent successfully

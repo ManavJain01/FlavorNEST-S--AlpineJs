@@ -64,8 +64,8 @@ export default function globalStore() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
 
-    removeFromCart(productId) {
-      this.cart = this.cart.filter((item) => item.id !== productId);
+    removeFromCart(product) {
+      this.cart = this.cart.filter((item) => item.id !== product.id);
 
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
