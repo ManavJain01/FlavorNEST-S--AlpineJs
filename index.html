@@ -63,6 +63,19 @@
           x-ref="vendor_registration"
         ></div>
 
+        <!-- User Pages -->
+          <!-- Profile -->
+        <div
+          x-show="currentPage === 'user_profile' && isLogin"
+          x-ref="user_profile"
+        ></div>
+
+          <!-- My Orders -->
+        <div
+          x-show="currentPage === 'user_myorders' && isLogin"
+          x-ref="user_myorders"
+        ></div>
+
         <!-- Informational Pages -->
         <!-- Careers Page -->
         <div x-show="currentPage === 'careers'" x-ref="careers"></div>

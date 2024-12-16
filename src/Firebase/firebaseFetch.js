@@ -8,19 +8,6 @@ import {
   getDoc,
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
-// Your Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyA_nYH23XJB6YS-DdRDepPiQ8azY9rGYRg",
-  authDomain: "foodnests-db.firebaseapp.com",
-  projectId: "foodnests-db",
-  storageBucket: "foodnests-db.firebasestorage.app",
-  messagingSenderId: "1009676022229",
-  appId: "1:1009676022229:web:0032add8ea38e099b84d5c",
-  measurementId: "G-D1ZMDGLV1X",
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 export default function fetchFoods() {
   return {
     foods: [],
@@ -28,6 +15,14 @@ export default function fetchFoods() {
     async fetchProducts() {
       this.loading = true;
       try {
+        // Access the store
+        const myStore = Alpine.store("applicationStore");
+
+        // Your Firebase configuration
+        const firebaseConfig = myStore().firebaseConfig;        
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
         const querySnapshot = await getDocs(collection(db, "products"));
         // Create an empty array to store products with vendor details
         const productsWithVendors = [];
@@ -63,9 +58,6 @@ export default function fetchFoods() {
       } finally {
         this.loading = false; // Stop the loader
       }
-      // viewProduct(food) {
-      //   alert(`Product selected: ${food.item}`);
-      // },
     },
   };
 }

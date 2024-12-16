@@ -5,22 +5,25 @@ export default function loginHandler() {
     otp: "",
     otpSent: false, // Track whether OTP is sent
     isEmail: true, // Determine if input is email
-    darkMode: false, // Example for dark mode toggle
 
     // Check whether the input is an email or phone
     checkInputType() {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       this.isEmail = emailRegex.test(this.identifier);
-      // console.log("Value in input field : ", this.identifier);
     },
 
     // Simulate sending OTP
-
     async sendOtp() {
       if (!this.identifier) {
         alert("Please enter your phone number.");
         return;
       }
+      const isNumber = /^\d+$/.test(this.identifier);
+      if(!isNumber || this.identifier.length === 10){
+        alert("Enter your correct email or phone number.");
+        return;
+      }
+      
       const phoneNumber =
         "+91 " +
         this.identifier.slice(0, 4) +
@@ -33,8 +36,6 @@ export default function loginHandler() {
       const myStore = Alpine.store("applicationStore");
 
       // Simulate an API call to send OTP
-      console.log("final phone number : ", phoneNumber);
-
       await myStore().loginUserViaPhone({ phoneNumber });
 
       console.log(`Sending OTP to ${this.identifier}`);
@@ -46,24 +47,22 @@ export default function loginHandler() {
 
     // Handle login functionality
     async login() {
-      const myStore = Alpine.store("applicationStore");
-      console.log("identifier :", this.identifier);
-
       if (!this.identifier) {
         alert("Please enter your email or phone number.");
         return;
       }
-
+      
       if (this.isEmail && !this.password) {
         alert("Please enter your password.");
         return;
       }
-
+      
       if (!this.isEmail && this.otpSent && !this.otp) {
         alert("Please enter the OTP.");
         return;
       }
-
+      // Importing Store
+      const myStore = Alpine.store("applicationStore");
       // Perform login logic (e.g., call your API)
       if (this.isEmail) {
         await myStore().loginUserViaEmailPassword({

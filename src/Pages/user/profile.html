@@ -1,0 +1,73 @@
+<div class="flex items-center gap-5">
+  <!-- Navbar -->
+  <ul class="flex flex-col w-[20rem]">
+    <li class="text-orange-600 bg-gradient-to-r from-orange-300 to-orange-100 px-5 py-2 border-l-4 border-orange-600 transition-all">
+      <button @click="currentPage = 'user_profile'" class="flex items-center gap-5 justify-between w-full">
+        <span>Account Info</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </li>
+    <li class="px-5 py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100">
+      <button @click="currentPage = 'user_myorders'" class="flex items-center gap-5 justify-between w-full">
+        <span>My Orders</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </li>
+    <li class="px-5 py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100">
+      <button @click="logout()" class="flex items-center gap-5 justify-between w-full">
+        <span>Logout</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </li>
+  </ul>
+
+  <!-- Profile -->
+  <div class="flex flex-col gap-5 w-full">
+    <h1 class="font-bold">MY PROFILE</h1>
+
+    <!-- Image, Name, EDIT PROFILE -->
+    <div class="flex items-center gap-5 p-5">
+      <img src="" alt="profile_pic">
+      <span>MANAV JAIN</span>
+      <button class="font-semibold text-xs text-white bg-orange-500 px-4 py-2 ml-auto hover:border hover:border-orange-500 rounded-full" :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'">EDIT PROFILE</button>
+    </div>
+
+    <!-- About Me -->
+    <div class="p-5">
+      <p>About Me</p>
+    </div>
+
+    <hr>
+
+    <!-- Personal Details -->
+    <p class="font-thin text-xl">Your Referral Code: 0c1a39e6</p>
+
+    <div class="text-lg flex flex-col gap-5 px-8">
+      <!-- Name -->
+      <section class="flex items-center gap-40">
+        <p>Name:</p>
+        <p>Manav Jain</p>
+      </section>
+
+      <!-- Email -->
+      <section class="flex items-center gap-[165px]">
+        <p>Email:</p>
+        <p>nit474011gwl@gmail.com</p>
+      </section>
+
+      <!-- Phone Number -->
+      <section class="flex items-center gap-[85px]">
+        <p>Phone Number:</p>
+        <p>+918269543305</p>
+      </section>
+
+      <!-- Time Zone -->
+      <section class="flex flex-col gap-2">
+        <p>Time Zone</p>
+        <select name="userProfile_timezone" id="userProfile_timezone" class="px-5 py-2 w-fit">
+          <option value="Kolkata">(GMT/UTC + 05:30) Kolkata</option>
+        </select>
+      </section>
+    </div>
+  </div>
+</div>

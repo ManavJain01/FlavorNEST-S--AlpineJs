@@ -13,39 +13,42 @@ import {
   setDoc,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
-// Your Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyA_nYH23XJB6YS-DdRDepPiQ8azY9rGYRg",
-  authDomain: "foodnests-db.firebaseapp.com",
-  projectId: "foodnests-db",
-  storageBucket: "foodnests-db.firebasestorage.app",
-  messagingSenderId: "1009676022229",
-  appId: "1:1009676022229:web:0032add8ea38e099b84d5c",
-  measurementId: "G-D1ZMDGLV1X",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-export { auth };
 // Define the Alpine.js data for register
 export default function registerHandler() {
+  // Your Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyA_nYH23XJB6YS-DdRDepPiQ8azY9rGYRg",
+    authDomain: "foodnests-db.firebaseapp.com",
+    projectId: "foodnests-db",
+    storageBucket: "foodnests-db.firebasestorage.app",
+    messagingSenderId: "1009676022229",
+    appId: "1:1009676022229:web:0032add8ea38e099b84d5c",
+    measurementId: "G-D1ZMDGLV1X",
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
   return {
-    // Your Firebase configuration
-    firebaseConfig: {
-      apiKey: "AIzaSyA_nYH23XJB6YS-DdRDepPiQ8azY9rGYRg",
-      authDomain: "foodnests-db.firebaseapp.com",
-      projectId: "foodnests-db",
-      storageBucket: "foodnests-db.firebasestorage.app",
-      messagingSenderId: "1009676022229",
-      appId: "1:1009676022229:web:0032add8ea38e099b84d5c",
-      measurementId: "G-D1ZMDGLV1X",
-    },
     //Register Variables
     message: "",
+
+    // Your Firebase configuration
+    firebaseConfig: {
+      apiKey: firebaseConfig.apiKey,
+      authDomain: firebaseConfig.authDomain,
+      projectId: firebaseConfig.projectId,
+      storageBucket: firebaseConfig.storageBucket,
+      messagingSenderId: firebaseConfig.messagingSenderId,
+      appId: firebaseConfig.appId,
+      measurementId: firebaseConfig.measurementId,
+    },
     recaptchaVerifier: null,
     confirmationResult: "",
+
+    // Functions
     initRecaptcha() {
       // Initialize reCAPTCHA verifier
       this.recaptchaVerifier = new RecaptchaVerifier(
@@ -59,7 +62,7 @@ export default function registerHandler() {
         }
       );
     },
-
+    // Login/Register Functions
     async registerUser(userData) {
       try {
         const { email, password, phone, name, referralCode } = userData;
@@ -125,9 +128,12 @@ export default function registerHandler() {
         const user = userCredential.user;
         console.log("userCredential ,....", userCredential);
 
+        // Access the store
+        const myStore = Alpine.store("applicationStore");
+        await myStore().userSuccessfullyLoggedIn(userCredential);
+
         // Show success message
         this.message = `Welcome back, ${user.email}! You are now logged in.`;
-        console.log("User logged in:", user);
       } catch (error) {
         this.message = error.message;
         console.error("Error logging in user:", error);
@@ -179,7 +185,10 @@ export default function registerHandler() {
 
         // Successfully logged in
         const user = userCredential.user;
-        console.log("User successfully verified and logged in:", user);
+
+        // Access the store
+        const myStore = Alpine.store("applicationStore");
+        await myStore().userSuccessfullyLoggedIn(userCredential);
 
         this.message = "Phone number successfully verified and logged in!";
       } catch (error) {

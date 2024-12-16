@@ -35,9 +35,9 @@
   </div>
 </div> -->
 
-<div class="flex justify-around">
+<div class="flex justify-around gap-5">
   <!-- Login Section -->
-  <div class="flex flex-col items-center justify-center gap-3">
+  <div class="flex flex-col justify-center gap-3">
     <h1 class="font-semibold text-2xl">Login To Your Account</h1>
 
     <!-- Input for Email or Phone -->
@@ -51,10 +51,10 @@
     />
 
     <!-- Conditional Input for Password -->
-    <template x-if="isEmail">
+    <template x-if="isEmail && identifier">
       <input
         type="password"
-        name="password"
+        name="login_password"
         placeholder="Enter Password"
         class="px-3 py-2 border rounded-full outline-none"
         x-model="password"
@@ -75,7 +75,15 @@
     <div x-data id="recaptcha-container"></div>
     <!-- Login Button -->
     <button
-      x-show="!isEmail"
+      x-show="isEmail"
+      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+      @Click="login()"
+    >
+      Continue
+    </button>
+    <button
+      x-show="!isEmail && !otp"
       class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
       :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
       @Click="sendOtp()"
@@ -83,14 +91,7 @@
       Continue
     </button>
     <button
-      x-show="isEmail"
-      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
-      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
-      @Click="login()"
-    >
-      Continue2
-    </button>
-    <button
+      x-show="!isEmail && otp"
       class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
       :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
       @Click="loginAfterOtp(otp)"
@@ -100,7 +101,7 @@
   </div>
 
   <!-- Registration Section -->
-  <div class="flex flex-col items-center justify-center gap-3">
+  <div class="flex flex-col justify-center gap-3">
     <h1 class="font-semibold text-2xl">Create Your Account</h1>
 
     <p>Create a free account and join us!</p>

@@ -9,6 +9,10 @@ const careersPage = "/src/Pages/Informational pages/careers.html";
 const faqsPage = "/src/Pages/Informational pages/FAQs.html";
 const privacyPoliciesPage = "/src/Pages/Informational pages/privacy_policies.html";
 const TermsAndConditionsPage = "/src/Pages/Informational pages/Terms_&_Conditions.html";
+// User Pages
+const userProfilePage = "/src/Pages/user/profile.html";
+const userMyOrdersPage = "/src/Pages/user/myOrders.html";
+
 
 export default function router(){
   return {
@@ -18,6 +22,16 @@ export default function router(){
     // Function to load HTML content dynamically into the container
     async loadComponent(page) {
       try {
+        // Access the store
+        const myStore = Alpine.store("applicationStore");
+        const isLogin = myStore().isLogin;
+        
+        // User Authentication
+        if(!isLogin && (page === "user_profile" || page === "user_myorders")){
+          page = "login";
+        }
+        
+        // Routing
         localStorage.setItem("currentPage", page);
         const homeContainer = this.$refs.home;
         const cartContainer = this.$refs.cart;
@@ -25,6 +39,9 @@ export default function router(){
         const registerContainer = this.$refs.register;
         const vendorRegistrationContainer = this.$refs.vendor_registration;
         const productCardContainer = this.$refs.productCard;
+        // User's Containers
+        const userProfileContainer = this.$refs.user_profile;
+        const userMyOrdersContainer = this.$refs.user_myorders;
         // Informational Page's Containers
         const careersContainer = this.$refs.careers;
         const faqsContainer = this.$refs.faqs;
@@ -36,11 +53,13 @@ export default function router(){
           : page === "login" ? loginPage
           : page === "register" ? registerPage
           : page === 'productCard' ? productCardPage
+          : page === 'vendor_registration' ? VendorRegistrationPage
+          : page === 'user_profile' ? userProfilePage
+          : page === 'user_myorders' ? userMyOrdersPage
           : page === 'careers' ? careersPage
           : page === 'faqs' ? faqsPage
           : page === 'privacy_policies' ? privacyPoliciesPage
           : page === 'terms_conditions' ? TermsAndConditionsPage
-          : page === 'vendor_registration' ? VendorRegistrationPage
           : homePage;
         const res = await fetch(pagePath);
         const html = await res.text();
@@ -57,6 +76,10 @@ export default function router(){
           vendorRegistrationContainer.innerHTML = html;
         } else if (page === 'productCard') {
           productCardContainer.innerHTML = html;
+        } else if (page === 'user_profile') {
+          userProfileContainer.innerHTML = html;
+        } else if (page === 'user_myorders') {
+          userMyOrdersContainer.innerHTML = html;
         } else if (page === 'careers') {
           careersContainer.innerHTML = html;
         } else if (page === 'faqs') {

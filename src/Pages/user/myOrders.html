@@ -1,0 +1,58 @@
+<div class="flex items-center gap-5">
+  <!-- Navbar -->
+  <ul class="flex flex-col w-[20rem]">
+    <li class="px-5 py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100">
+      <button @click="currentPage = 'user_profile'" class="flex items-center gap-5 justify-between w-full">
+        <span>Account Info</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </li>
+    <li class="text-orange-600 bg-gradient-to-r from-orange-300 to-orange-100 px-5 py-2 border-l-4 border-orange-600 transition-all">
+      <button @click="currentPage = 'user_myorders'" class="flex items-center gap-5 justify-between w-full">
+        <span>My Orders</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </li>
+    <li class="px-5 py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100">
+      <button @click="logout()" class="flex items-center gap-5 justify-between w-full">
+        <span>Logout</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </li>
+  </ul>
+
+  <!-- My Orders -->
+  <div x-data="{goTo: 'active_orders'}" class="flex flex-col gap-5">
+    <h1 class="font-bold">ORDERS</h1>
+    <p class="text-lg">Your Previous Orders</p>
+
+    <!-- NavOptions -->
+    <ul class="font-semibold flex items-center gap-5 mt-5">
+      <li class="pb-2" :class="goTo === 'active_orders' && 'border-b-2 border-orange-600'"><button @click="goTo = 'active_orders'">ACTIVE ORDERS</button></li>
+      <li class="pb-2" :class="goTo === 'past_orders' && 'border-b-2 border-orange-600'"><button @click="goTo = 'past_orders'">PAST ORDERS</button></li>
+      <li class="pb-2" :class="goTo === 'return_requests' && 'border-b-2 border-orange-600'"><button @click="goTo = 'return_requests'">RETURN REQUESTS</button></li>
+      <li class="pb-2" :class="goTo === 'orders_cancel' && 'border-b-2 border-orange-600'"><button @click="goTo = 'orders_cancel'">ORDERS REJECTED/CANCEL</button></li>
+    </ul>
+
+    <!-- Filterred Orders -->
+      <!-- Active Orders -->
+    <div x-show="goTo === 'active_orders'" class="flex flex-col items-center justify-center">
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">No Active Orders Found</p>
+    </div>
+    
+    <!-- Past Orders -->
+    <div x-show="goTo === 'past_orders'" class="flex flex-col items-center justify-center">
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">No Past Orders Found</p>
+    </div>
+    
+    <!-- Return Requests -->
+    <div x-show="goTo === 'return_requests'" class="flex flex-col items-center justify-center">
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">No Return Requests</p>
+    </div>
+    
+    <!-- Orders Cancel -->
+    <div x-show="goTo === 'orders_cancel'" class="flex flex-col items-center justify-center">
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">No Rejected/Cancel Order Found</p>
+    </div>
+  </div>
+</div>
