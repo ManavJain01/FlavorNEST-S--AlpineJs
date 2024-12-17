@@ -25,7 +25,7 @@ export default function registerHandler() {
     appId: "1:1009676022229:web:0032add8ea38e099b84d5c",
     measurementId: "G-D1ZMDGLV1X",
   };
-  
+
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -130,7 +130,7 @@ export default function registerHandler() {
 
         // Access the store
         const myStore = Alpine.store("applicationStore");
-        await myStore().userSuccessfullyLoggedIn(userCredential);
+        await myStore().userSuccessfullyLoggedIn(userCredential.user.uid);
 
         // Show success message
         this.message = `Welcome back, ${user.email}! You are now logged in.`;
@@ -188,7 +188,7 @@ export default function registerHandler() {
 
         // Access the store
         const myStore = Alpine.store("applicationStore");
-        await myStore().userSuccessfullyLoggedIn(userCredential);
+        await myStore().userSuccessfullyLoggedIn(userCredential.user.uid);
 
         this.message = "Phone number successfully verified and logged in!";
       } catch (error) {

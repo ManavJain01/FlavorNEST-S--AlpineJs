@@ -7,30 +7,32 @@ const productCardPage = "/src/components/shared/productCard.html";
 // Informational Pages
 const careersPage = "/src/Pages/Informational pages/careers.html";
 const faqsPage = "/src/Pages/Informational pages/FAQs.html";
-const privacyPoliciesPage = "/src/Pages/Informational pages/privacy_policies.html";
-const TermsAndConditionsPage = "/src/Pages/Informational pages/Terms_&_Conditions.html";
+const privacyPoliciesPage =
+  "/src/Pages/Informational pages/privacy_policies.html";
+const TermsAndConditionsPage =
+  "/src/Pages/Informational pages/Terms_&_Conditions.html";
 // User Pages
 const userProfilePage = "/src/Pages/user/profile.html";
 const userMyOrdersPage = "/src/Pages/user/myOrders.html";
+const successPage = "/src/components/shared/success.html";
 
-
-export default function router(){
+export default function router() {
   return {
-    currentPage: localStorage.getItem("currentPage") || 'home', // Default page is home
+    currentPage: localStorage.getItem("currentPage") || "home", // Default page is home
     productCard: JSON.parse(localStorage.getItem("productCard")) || {},
-    
+
     // Function to load HTML content dynamically into the container
     async loadComponent(page) {
       try {
         // Access the store
         const myStore = Alpine.store("applicationStore");
         const isLogin = myStore().isLogin;
-        
+
         // User Authentication
-        if(!isLogin && (page === "user_profile" || page === "user_myorders")){
+        if (!isLogin && (page === "user_profile" || page === "user_myorders")) {
           page = "login";
         }
-        
+
         // Routing
         localStorage.setItem("currentPage", page);
         const homeContainer = this.$refs.home;
@@ -47,26 +49,40 @@ export default function router(){
         const faqsContainer = this.$refs.faqs;
         const privacyPoliciesContainer = this.$refs.privacy_policies;
         const TermsAndConditionsContainer = this.$refs.terms_conditions;
-        
+        const successContainer = this.$refs.success;
+
         const pagePath =
-          page === "cart" ? cartPage
-          : page === "login" ? loginPage
-          : page === "register" ? registerPage
-          : page === 'productCard' ? productCardPage
-          : page === 'vendor_registration' ? VendorRegistrationPage
-          : page === 'user_profile' ? userProfilePage
-          : page === 'user_myorders' ? userMyOrdersPage
-          : page === 'careers' ? careersPage
-          : page === 'faqs' ? faqsPage
-          : page === 'privacy_policies' ? privacyPoliciesPage
-          : page === 'terms_conditions' ? TermsAndConditionsPage
-          : homePage;
+          page === "cart"
+            ? cartPage
+            : page === "login"
+            ? loginPage
+            : page === "register"
+            ? registerPage
+            : page === "productCard"
+            ? productCardPage
+            : page === "vendor_registration"
+            ? VendorRegistrationPage
+            : page === "user_profile"
+            ? userProfilePage
+            : page === "user_myorders"
+            ? userMyOrdersPage
+            : page === "careers"
+            ? careersPage
+            : page === "faqs"
+            ? faqsPage
+            : page === "privacy_policies"
+            ? privacyPoliciesPage
+            : page === "terms_conditions"
+            ? TermsAndConditionsPage
+            : page === "success"
+            ? successPage
+            : homePage;
         const res = await fetch(pagePath);
         const html = await res.text();
-        
-        if (page === 'home') {
+
+        if (page === "home") {
           homeContainer.innerHTML = html;
-        } else if (page === 'cart') {
+        } else if (page === "cart") {
           cartContainer.innerHTML = html;
         } else if (page === "login") {
           loginContainer.innerHTML = html;
@@ -74,23 +90,25 @@ export default function router(){
           registerContainer.innerHTML = html;
         } else if (page === "vendor_registration") {
           vendorRegistrationContainer.innerHTML = html;
-        } else if (page === 'productCard') {
+        } else if (page === "productCard") {
           productCardContainer.innerHTML = html;
-        } else if (page === 'user_profile') {
+        } else if (page === "user_profile") {
           userProfileContainer.innerHTML = html;
-        } else if (page === 'user_myorders') {
+        } else if (page === "user_myorders") {
           userMyOrdersContainer.innerHTML = html;
-        } else if (page === 'careers') {
+        } else if (page === "careers") {
           careersContainer.innerHTML = html;
-        } else if (page === 'faqs') {
+        } else if (page === "faqs") {
           faqsContainer.innerHTML = html;
-        } else if (page === 'privacy_policies') {
+        } else if (page === "privacy_policies") {
           privacyPoliciesContainer.innerHTML = html;
-        } else if (page === 'terms_conditions') {
+        } else if (page === "terms_conditions") {
           TermsAndConditionsContainer.innerHTML = html;
+        } else if (page === "success") {
+          successContainer.innerHTML = html;
         }
       } catch (error) {
-        console.error('Error loading component:', error)
+        console.error("Error loading component:", error);
       }
     },
 
@@ -106,7 +124,7 @@ export default function router(){
     viewProduct(product) {
       localStorage.setItem("productCard", JSON.stringify(product));
       this.productCard = product;
-      this.currentPage = 'productCard'; // Change page to productCard
+      this.currentPage = "productCard"; // Change page to productCard
     },
   };
-};
+}

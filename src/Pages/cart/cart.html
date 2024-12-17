@@ -1,7 +1,4 @@
-<div
-  class="text-gray-500 pb-10"
-  x-data="{ cart : cart , total : setTotal()}"
->
+<div class="text-gray-500 pb-10" x-data="{ cart : cart , total : setTotal()}">
   <div
     x-show="cart.length<=0"
     class="flex flex-col justify-center items-center gap-2"
@@ -20,7 +17,12 @@
 
   <div x-show="cart.length>0" class="flex justify-around gap-5">
     <div class="flex flex-col gap-3 w-full">
-      <p class="font-semibold text-2xl" :class="darkMode ? 'text-white' : 'text-black'">Shopping Cart</p>
+      <p
+        class="font-semibold text-2xl"
+        :class="darkMode ? 'text-white' : 'text-black'"
+      >
+        Shopping Cart
+      </p>
       <table class="h-fit border-collapse border border-gray-300">
         <!-- Table Head -->
         <thead class="bg-gray-100">
@@ -61,12 +63,17 @@
                   class="h-24 w-24 rounded"
                 />
                 <div>
-                  <span class="text-sm text-gray-600" x-text="food.category"></span>
+                  <span
+                    class="text-sm text-gray-600"
+                    x-text="food.category"
+                  ></span>
                   <h2 class="text-lg font-bold" x-text="food.item"></h2>
                 </div>
               </td>
               <!-- Price -->
-              <td class="p-4 text-gray-600">₹ <span x-text="food.price"></span></td>
+              <td class="p-4 text-gray-600">
+                ₹ <span x-text="food.price"></span>
+              </td>
               <!-- Quantity -->
               <td class="p-4">
                 <div class="w-fit border border-orange-500 rounded">
@@ -79,6 +86,7 @@
                   <input
                     type="number"
                     min="0"
+                    name="cart_quantity"
                     x-model="quantity"
                     class="w-12 text-center bg-transparent outline-none"
                   />
@@ -114,7 +122,6 @@
       </table>
     </div>
 
-
     <div class="flex flex-col gap-3 p-5 shadow-md rounded-xl">
       <h1 class="font-semibold text-2xl">Order Summary</h1>
       <p class="text-xl">Specific instructions</p>
@@ -148,6 +155,13 @@
       <p class="flex justify-between pb-3 border-y">
         Amount Payable <span class="font-bold">₹ 291.46</span>
       </p>
+      <button
+        @click="getProductForPayment()"
+        class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+        :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+      >
+        Place Order
+      </button>
     </div>
   </div>
 </div>

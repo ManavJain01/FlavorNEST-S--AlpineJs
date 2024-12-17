@@ -3,6 +3,7 @@ export default function globalStore() {
     darkMode: false,
     cart: [],
     isLogin: localStorage.getItem("authToken") ? true : false,
+    // isLogin: true,
 
     init() {
       // Initialize dark mode from localStorage
@@ -47,7 +48,6 @@ export default function globalStore() {
         updatedProduct.quantity = quantity;
         this.cart.push(updatedProduct);
       }
-
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
 
@@ -57,14 +57,16 @@ export default function globalStore() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
 
-    async userSuccessfullyLoggedIn(cache){
+    async userSuccessfullyLoggedIn(cache) {
       localStorage.setItem("authToken", cache);
       this.isLogin = true;
+      localStorage.setItem("currentPage", "home");
+      window.location.reload();
     },
 
     logout() {
       localStorage.removeItem("authToken");
       this.isLogin = false;
-    }
+    },
   };
 }

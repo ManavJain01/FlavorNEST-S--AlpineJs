@@ -64,13 +64,13 @@
         ></div>
 
         <!-- User Pages -->
-          <!-- Profile -->
+        <!-- Profile -->
         <div
           x-show="currentPage === 'user_profile' && isLogin"
           x-ref="user_profile"
         ></div>
 
-          <!-- My Orders -->
+        <!-- My Orders -->
         <div
           x-show="currentPage === 'user_myorders' && isLogin"
           x-ref="user_myorders"
@@ -94,6 +94,8 @@
           x-show="currentPage === 'terms_conditions'"
           x-ref="terms_conditions"
         ></div>
+
+        <div x-show="currentPage === 'success'" x-ref="success"></div>
       </div>
 
       <!-- Dark Theme -->
