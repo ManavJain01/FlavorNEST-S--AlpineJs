@@ -49,9 +49,9 @@
       />
       <span x-text="userDetails?.name || 'username'"></span>
       <button
-        class="custom-button font-semibold text-xs text-white bg-orange-500 px-4 py-2 ml-auto hover:border hover:border-orange-500 rounded-full"
-        :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
-      >
+        class="hover-animated-button font-semibold text-xs bg-orange-500 px-4 py-2 ml-auto border border-orange-500 rounded-full"
+        :class="darkMode ? 'text-white' : 'text-white hover:text-black'"
+        >
         EDIT PROFILE
       </button>
     </div>
@@ -94,12 +94,11 @@
         <select
           name="userProfile_timezone"
           id="userProfile_timezone"
-          class="px-5 py-2 w-fit"
+          class="bg-transparent px-3 py-2 w-fit border border-gray-300 outline-none"
         >
-          <option value="Kolkata">(GMT/UTC + 05:30) Kolkata</option>
+          <option value="Kolkata" :class="darkMode ? 'bg-black' : 'bg-white'">(GMT/UTC + 05:30) Kolkata</option>
         </select>
       </section>
-      <button @click="console.log(user)">click to Profile</button>
     </div>
   </div>
 </div>

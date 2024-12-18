@@ -1,20 +1,9 @@
 export default function globalStore() {
   return {
-    darkMode: false,
+    darkMode: JSON.parse(localStorage.getItem("darkMode")) || false,
     cart: [],
     isLogin: localStorage.getItem("authToken") ? true : false,
     // isLogin: true,
-
-    init() {
-      // Initialize dark mode from localStorage
-      this.darkMode = JSON.parse(localStorage.getItem("darkMode")) || false;
-      if (this.darkMode) {
-        document.body.classList.add("dark");
-      }
-
-      // Load cart data from localStorage
-      this.cart = JSON.parse(localStorage.getItem("cart")) || [];
-    },
 
     toggleTheme() {
       this.darkMode = !this.darkMode;

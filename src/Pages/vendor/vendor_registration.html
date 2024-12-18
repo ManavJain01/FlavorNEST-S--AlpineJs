@@ -9,25 +9,25 @@
 
   <!-- Personal Details -->
   <div class="flex flex-col">
-    <p class="font-bold text-xl bg-gray-200 py-3 px-5 rounded-t-2xl">PERSONAL DETAILS</p>
+    <p class="font-bold text-xl py-3 px-5 rounded-t-2xl" :class="darkMode ? 'bg-transparent' : 'bg-gray-200'">PERSONAL DETAILS</p>
 
     <!-- Name, Phone Number, Title and Email -->
     <div class="flex items-center gap-3 px-5 py-5">
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_name">Full Name</label>
-        <input type="text" name="vendor_registration_name" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_name" class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_phone">Phone No.</label>
-        <input type="text" name="vendor_registration_phone" placeholder="81234 56789" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_phone" placeholder="81234 56789" class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_title">Title</label>
-        <input type="text" name="vendor_registration_title" placeholder="Mr./Miss/Mrs." class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_title" placeholder="Mr./Miss/Mrs." class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_email">Email</label>
-        <input type="email" name="vendor_registration_email" class="px-5 py-2 border outline-none">
+        <input type="email" name="vendor_registration_email" class="bg-transparent px-5 py-2 border outline-none">
       </section>
     </div>
 
@@ -35,45 +35,45 @@
     <div class="flex items-center gap-3 px-5 py-3">
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_password">Password</label>
-        <input type="password" name="vendor_registration_password" class="px-5 py-2 border outline-none">
+        <input type="password" name="vendor_registration_password" class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_confirmpassword">Confirm Password</label>
-        <input type="password" name="vendor_registration_confirmpassword" placeholder="81234 56789" class="px-5 py-2 border outline-none">
+        <input type="password" name="vendor_registration_confirmpassword" placeholder="81234 56789" class="bg-transparent px-5 py-2 border outline-none">
       </section>
     </div>
   </div>
 
   <!-- Banking Details -->
   <div class="flex flex-col">
-    <p class="font-bold text-xl bg-gray-200 py-3 px-5 rounded-t-2xl">BANKING DETAILS</p>
+    <p class="font-bold text-xl py-3 px-5 rounded-t-2xl" :class="darkMode ? 'bg-transparent' : 'bg-gray-200'">BANKING DETAILS</p>
 
     <!-- Account Name, Bank Name, and IFSC Code -->
     <div class="flex items-center gap-3 px-5 py-5">
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_accountname">Account Name</label>
-        <input type="text" name="vendor_registration_accountname" placeholder="Account Name" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_accountname" placeholder="Account Name" class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_bankname">Bank Name</label>
-        <input type="text" name="vendor_registration_bankname" placeholder="Bank Name" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_bankname" placeholder="Bank Name" class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_ifsccode">IFSC Code</label>
-        <input type="text" name="vendor_registration_ifsccode" placeholder="IFSC Code" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_ifsccode" placeholder="IFSC Code" class="bg-transparent px-5 py-2 border outline-none">
       </section>
     </div>
   </div>
 
   <!-- Vendor Details -->
   <div class="flex flex-col">
-    <p class="font-bold text-xl bg-gray-200 py-3 px-5 rounded-t-2xl">VENDOR DETAILS</p>
+    <p class="font-bold text-xl py-3 px-5 rounded-t-2xl" :class="darkMode ? 'bg-transparent' : 'bg-gray-200'">VENDOR DETAILS</p>
 
     <!-- Vendors Name, Vendor Type -->
     <div class="flex items-center gap-3 px-5 py-5">
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_vendorname">Vendors Name</label>
-        <input type="text" name="vendor_registration_vendorname" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_vendorname" class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <!-- <section class="flex flex-col gap-2">
         <select name="" id=""></select>
@@ -84,19 +84,19 @@
     <div class="flex items-center gap-3 px-5 py-5">
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_zipcode">Zipcode</label>
-        <input type="text" name="vendor_registration_zipcode" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_zipcode" class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_city">City</label>
-        <input type="text" name="vendor_registration_city" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_city" class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_state">State/Province</label>
-        <input type="text" name="vendor_registration_state" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_state" class="bg-transparent px-5 py-2 border outline-none">
       </section>
       <section class="flex flex-col gap-2">
         <label for="vendor_registration_country">Vendors Name</label>
-        <input type="text" name="vendor_registration_country" class="px-5 py-2 border outline-none">
+        <input type="text" name="vendor_registration_country" class="bg-transparent px-5 py-2 border outline-none">
       </section>
     </div>
   </div>
@@ -109,5 +109,5 @@
     <button @click="currentPage = 'privacy_policies'" class="text-sky-500">Privacy Policy.</button>
   </div>
 
-  <button class="text-sm text-white bg-orange-500 px-4 py-2 hover:border hover:border-orange-500 rounded-full" :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'">Submit</button>
+  <button class="hover-animated-button font-semibold text-xs bg-orange-500 px-4 py-2 border border-orange-500 w-[20rem] rounded-full" :class="darkMode ? 'text-white' : 'text-white hover:text-black'">SUBMIT</button>
 </div>

@@ -41,7 +41,7 @@
       <div x-init="headerComponent()"></div>
 
       <!-- Modules -->
-      <div class="flex-1 mt-64 px-10">
+      <div class="flex-1 mt-64 pb-20 px-10">
         <!-- Home Page -->
         <div x-show="currentPage === 'home'" x-ref="home"></div>
 
@@ -103,7 +103,7 @@
         <button
           @click="toggleTheme"
           class="p-3 rounded-full rounded-r-none shadow-lg"
-          :class="darkMode ? 'bg-white text-black' : 'bg-orange-500 text-white'"
+          :class="darkMode ? 'bg-white text-black' : 'bg-[#e76f0a] text-white'"
         >
           <i class="fa" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
         </button>
