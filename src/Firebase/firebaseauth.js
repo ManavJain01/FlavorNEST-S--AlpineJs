@@ -85,6 +85,7 @@ export default function registerHandler() {
 
           // Store user details in Firestore
           await setDoc(doc(db, "users", user.uid), {
+            uid: user.uid,
             name: name,
             email: email,
             phone_number: phone,

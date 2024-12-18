@@ -42,10 +42,14 @@
 
     <!-- Image, Name, EDIT PROFILE -->
     <div class="flex items-center gap-5 p-5">
-      <img src="" alt="profile_pic" />
-      <span>MANAV JAIN</span>
+      <img
+        class="w-24 rounded-full h-24"
+        src="https://s3.us-west-2.amazonaws.com/royoorders2.0-assets/default/default_image.png"
+        alt="profile_pic"
+      />
+      <span x-text="userDetails?.name || 'username'"></span>
       <button
-        class="font-semibold text-xs text-white bg-orange-500 px-4 py-2 ml-auto hover:border hover:border-orange-500 rounded-full"
+        class="custom-button font-semibold text-xs text-white bg-orange-500 px-4 py-2 ml-auto hover:border hover:border-orange-500 rounded-full"
         :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
       >
         EDIT PROFILE
@@ -60,25 +64,28 @@
     <hr />
 
     <!-- Personal Details -->
-    <p class="font-thin text-xl">Your Referral Code: 0c1a39e6</p>
+    <p class="font-thin text-xl">
+      Your Referral Code:
+      <span x-text="userDetails?.referral_code || '0C@432tr'"></span>
+    </p>
 
     <div class="text-lg flex flex-col gap-5 px-8">
       <!-- Name -->
       <section class="flex items-center gap-40">
         <p>Name:</p>
-        <p>Manav Jain</p>
+        <p x-text="userDetails?.name || 'name here'"></p>
       </section>
 
       <!-- Email -->
       <section class="flex items-center gap-[165px]">
         <p>Email:</p>
-        <p>nit474011gwl@gmail.com</p>
+        <p x-text="userDetails?.email || 'example@email.com'"></p>
       </section>
 
       <!-- Phone Number -->
       <section class="flex items-center gap-[85px]">
         <p>Phone Number:</p>
-        <p>+918269543305</p>
+        <p x-text="userDetails?.phone_number || 'xxxxxxxxx'"></p>
       </section>
 
       <!-- Time Zone -->

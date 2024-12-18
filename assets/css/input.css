@@ -49,3 +49,34 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+
+
+
+
+
+
+
+
+
+.custom-button {
+ /* Orange */
+  animation: none;
+}
+
+/* Keyframes for the hover animation */
+@keyframes hoverAnimation {
+  0% {
+    background-color: #1630f9; /* Orange */
+    color: white;
+  }
+  100% {
+    background-color: white;
+    color: rgba(249, 115, 22, 0.5); /* Orange with 50% opacity */
+  }
+}
+
+/* Hover state */
+.custom-button:hover {
+  animation: hoverAnimation 0.3s backwards; /* Apply animation on hover */
+}
