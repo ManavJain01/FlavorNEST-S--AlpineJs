@@ -39,24 +39,24 @@
     <!-- Login Button -->
     <button
       x-show="isEmail"
-      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
-      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+      class="hover-animated-button font-semibold text-xs bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+      :class="darkMode ? 'text-white' : 'text-white hover:text-black'"
       @Click="login()"
     >
       Continue
     </button>
     <button
       x-show="!isEmail && !otp"
-      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
-      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+      class="hover-animated-button font-semibold text-xs bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+      :class="darkMode ? 'text-white' : 'text-white hover:text-black'"
       @Click="sendOtp()"
     >
       Continue
     </button>
     <button
       x-show="!isEmail && otp"
-      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
-      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+      class="hover-animated-button font-semibold text-xs bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+      :class="darkMode ? 'text-white' : 'text-white hover:text-black'"
       @Click="loginAfterOtp(otp)"
     >
       Verify otp
@@ -71,8 +71,8 @@
 
     <button
       @click="currentPage = 'register'"
-      class="text-sm text-white bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
-      :class="darkMode ? 'hover:bg-black hover:text-white' : 'hover:bg-white hover:text-black'"
+      class="hover-animated-button font-semibold text-xs bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
+      :class="darkMode ? 'text-white' : 'text-white hover:text-black'"
     >
       Create An Account
     </button>

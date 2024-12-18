@@ -1,4 +1,4 @@
-<div x-data="{ orders :await fetchOrders() }" class="flex items-center gap-5">
+<div x-data="{ orders : fetchOrders() }" class="flex items-center gap-5">
   <!-- Navbar -->
   <ul class="flex flex-col w-[20rem]">
     <li
@@ -73,21 +73,20 @@
     <!-- Active Orders -->
     <div
       x-show="goTo === 'active_orders'"
-      class="flex flex-col items-center justify-center"
+      class="flex flex-wrap items-center justify-center"
     >
-      <template x-for="food in orders" :key="food.id">
+      <template x-for="food in orders" :key="food?.orderId">
         <div
           x-show="orders"
-          class="bg-gray-100 min-h-screen flex items-center justify-center p-5"
+          class="bg-gray-100 min-h-screen flex items-center justify-center px-5"
         >
           <!-- Order Card -->
-          <button @click="console.log(food?.item)">click here</button>
           <div
-            class="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden"
+            class="w-full bg-white rounded-lg shadow-md overflow-hidden"
           >
             <!-- Image Section -->
             <img
-              :src="food?.img || ''"
+              :src="food.items[0]?.img || ''"
               alt="Chicken Biryani"
               class="w-full h-40 object-cover"
             />
@@ -97,7 +96,7 @@
               <!-- Title and Status -->
               <div class="flex justify-between items-center">
                 <h2
-                  x-text="food?.item"
+                  x-text="food.items[0]?.item"
                   class="text-lg font-semibold text-gray-800"
                 ></h2>
                 <span
@@ -109,17 +108,17 @@
 
               <!-- Vendor and Category -->
               <p class="text-sm text-gray-600 mt-2">
-                <span x-text="food?.vendor" class="font-semibold">Vendor:</span>
+                <span x-text="food.items[0]?.vendor" class="font-semibold">Vendor:</span>
               </p>
               <p class="text-sm text-gray-600">
-                <span x-text="food?.category" class="font-semibold"
+                <span x-text="food.items[0]?.category" class="font-semibold"
                   >Category:</span
                 >
               </p>
 
               <!-- Description -->
               <p
-                x-text="food?.description"
+                x-text="food.items[0]?.description"
                 class="text-gray-700 text-sm mt-3"
               ></p>
 
@@ -127,12 +126,11 @@
               <div class="flex justify-between items-center mt-4">
                 <p
                   class="text-lg font-bold text-orange-500"
-                  x-text="'₹ '+food?.price"
+                  x-text="'₹ '+food.items[0]?.price"
                 ></p>
                 <p class="text-sm text-gray-500">
-                  <span class="font-medium" x-text="food?.placed_at"
-                    >Placed At:</span
-                  >
+                  Placed At:
+                  <!-- <span class="font-medium" x-text="food?.placed_at"></span> -->
                 </p>
               </div>
 
@@ -153,12 +151,6 @@
       >
         No Active Orders Found
       </p>
-      <button
-        @click="console.log(await fetchOrders())"
-        class="w-full bg-orange-500 text-white text-sm font-semibold py-2 rounded-lg mt-4 hover:bg-orange-600 transition-colors"
-      >
-        fetch orders
-      </button>
     </div>
 
     <!-- Past Orders -->

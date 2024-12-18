@@ -10,14 +10,12 @@ import {
 
 export default function firebaseUserDetailFetch() {
   return {
-    orders: [],
     userDetails: null,
     uid: localStorage.getItem("authToken"), // User UID from localStorage
 
     async fetchUserdetails() {
       try {
         const myStore = Alpine.store("applicationStore");
-        console.log("uid : ....", this.uid);
 
         // Your Firebase configuration
         const firebaseConfig = myStore().firebaseConfig;
@@ -32,7 +30,6 @@ export default function firebaseUserDetailFetch() {
             (user) => user.data().uid === this.uid
           );
           this.userDetails = userData[0].data();
-          console.log("User Details:", this.userDetails);
         } else {
           console.log("No user found with the given UID.");
         }
@@ -46,11 +43,11 @@ export default function firebaseUserDetailFetch() {
       try {
         const myStore = Alpine.store("applicationStore");
         const firebaseConfig = myStore().firebaseConfig;
-
+        
         // Initialize Firebase app and Firestore
         const app = await initializeApp(firebaseConfig);
         const db = await getFirestore(app);
-
+        
         // Query to get orders from Firestore for the specific user
         const ordersRef = await collection(db, "orders");
         const ordersQuery = await query(
@@ -59,16 +56,17 @@ export default function firebaseUserDetailFetch() {
         );
 
         const querySnapshot = await getDocs(ordersQuery);
-        console.log(querySnapshot);
 
         if (!querySnapshot.empty) {
-          console.log("her..");
-          this.orders = await querySnapshot.docs.map((doc) => ({
+          const orders = await querySnapshot.docs.map((doc) => ({
             id: doc.id, // Firestore document ID
             ...doc.data(), // Firestore document data
           }));
-          console.log("Fetched Orders:", this.orders);
+
+          console.log("orders: ", orders);
+          return orders;
         }
+        return [];
       } catch (error) {
         console.error("Error fetching orders: ", error);
       }

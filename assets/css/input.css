@@ -47,11 +47,11 @@ input[type="number"] {
 
 /* Custom Button Styles */
 .hover-animated-button {
-  animation: color-reverse 0.1s forwards;
+  animation: color-reverse 0.175s forwards;
 }
 
 .hover-animated-button:hover {
-  animation: color-transition 0.1s forwards;
+  animation: color-transition 0.175s forwards;
 }
 
 @keyframes color-transition {
