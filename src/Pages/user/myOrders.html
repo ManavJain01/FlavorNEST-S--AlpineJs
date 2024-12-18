@@ -1,20 +1,35 @@
-<div class="flex items-center gap-5">
+<div x-data="{ orders :await fetchOrders() }" class="flex items-center gap-5">
   <!-- Navbar -->
   <ul class="flex flex-col w-[20rem]">
-    <li class="px-5 py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100">
-      <button @click="currentPage = 'user_profile'" class="flex items-center gap-5 justify-between w-full">
+    <li
+      class="px-5 py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+    >
+      <button
+        @click="currentPage = 'user_profile'"
+        class="flex items-center gap-5 justify-between w-full"
+      >
         <span>Account Info</span>
         <i class="fa-solid fa-arrow-right"></i>
       </button>
     </li>
-    <li class="text-orange-600 bg-gradient-to-r from-orange-300 to-orange-100 px-5 py-2 border-l-4 border-orange-600 transition-all">
-      <button @click="currentPage = 'user_myorders'" class="flex items-center gap-5 justify-between w-full">
+    <li
+      class="text-orange-600 bg-gradient-to-r from-orange-300 to-orange-100 px-5 py-2 border-l-4 border-orange-600 transition-all"
+    >
+      <button
+        @click="currentPage = 'user_myorders'"
+        class="flex items-center gap-5 justify-between w-full"
+      >
         <span>My Orders</span>
         <i class="fa-solid fa-arrow-right"></i>
       </button>
     </li>
-    <li class="px-5 py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100">
-      <button @click="logout()" class="flex items-center gap-5 justify-between w-full">
+    <li
+      class="px-5 py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+    >
+      <button
+        @click="logout()"
+        class="flex items-center gap-5 justify-between w-full"
+      >
         <span>Logout</span>
         <i class="fa-solid fa-arrow-right"></i>
       </button>
@@ -28,31 +43,152 @@
 
     <!-- NavOptions -->
     <ul class="font-semibold flex items-center gap-5 mt-5">
-      <li class="pb-2" :class="goTo === 'active_orders' && 'border-b-2 border-orange-600'"><button @click="goTo = 'active_orders'">ACTIVE ORDERS</button></li>
-      <li class="pb-2" :class="goTo === 'past_orders' && 'border-b-2 border-orange-600'"><button @click="goTo = 'past_orders'">PAST ORDERS</button></li>
-      <li class="pb-2" :class="goTo === 'return_requests' && 'border-b-2 border-orange-600'"><button @click="goTo = 'return_requests'">RETURN REQUESTS</button></li>
-      <li class="pb-2" :class="goTo === 'orders_cancel' && 'border-b-2 border-orange-600'"><button @click="goTo = 'orders_cancel'">ORDERS REJECTED/CANCEL</button></li>
+      <li
+        class="pb-2"
+        :class="goTo === 'active_orders' && 'border-b-2 border-orange-600'"
+      >
+        <button @click="goTo = 'active_orders'">ACTIVE ORDERS</button>
+      </li>
+      <li
+        class="pb-2"
+        :class="goTo === 'past_orders' && 'border-b-2 border-orange-600'"
+      >
+        <button @click="goTo = 'past_orders'">PAST ORDERS</button>
+      </li>
+      <li
+        class="pb-2"
+        :class="goTo === 'return_requests' && 'border-b-2 border-orange-600'"
+      >
+        <button @click="goTo = 'return_requests'">RETURN REQUESTS</button>
+      </li>
+      <li
+        class="pb-2"
+        :class="goTo === 'orders_cancel' && 'border-b-2 border-orange-600'"
+      >
+        <button @click="goTo = 'orders_cancel'">ORDERS REJECTED/CANCEL</button>
+      </li>
     </ul>
 
     <!-- Filterred Orders -->
-      <!-- Active Orders -->
-    <div x-show="goTo === 'active_orders'" class="flex flex-col items-center justify-center">
-      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">No Active Orders Found</p>
+    <!-- Active Orders -->
+    <div
+      x-show="goTo === 'active_orders'"
+      class="flex flex-col items-center justify-center"
+    >
+      <template x-for="food in orders" :key="food.id">
+        <div
+          x-show="orders"
+          class="bg-gray-100 min-h-screen flex items-center justify-center p-5"
+        >
+          <!-- Order Card -->
+          <button @click="console.log(food?.item)">click here</button>
+          <div
+            class="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden"
+          >
+            <!-- Image Section -->
+            <img
+              :src="food?.img || ''"
+              alt="Chicken Biryani"
+              class="w-full h-40 object-cover"
+            />
+
+            <!-- Order Details -->
+            <div class="p-5">
+              <!-- Title and Status -->
+              <div class="flex justify-between items-center">
+                <h2
+                  x-text="food?.item"
+                  class="text-lg font-semibold text-gray-800"
+                ></h2>
+                <span
+                  x-text="food?.status"
+                  class="text-sm font-medium text-green-500 bg-green-100 px-2 py-1 rounded-full"
+                >
+                </span>
+              </div>
+
+              <!-- Vendor and Category -->
+              <p class="text-sm text-gray-600 mt-2">
+                <span x-text="food?.vendor" class="font-semibold">Vendor:</span>
+              </p>
+              <p class="text-sm text-gray-600">
+                <span x-text="food?.category" class="font-semibold"
+                  >Category:</span
+                >
+              </p>
+
+              <!-- Description -->
+              <p
+                x-text="food?.description"
+                class="text-gray-700 text-sm mt-3"
+              ></p>
+
+              <!-- Price and Date -->
+              <div class="flex justify-between items-center mt-4">
+                <p
+                  class="text-lg font-bold text-orange-500"
+                  x-text="'₹ '+food?.price"
+                ></p>
+                <p class="text-sm text-gray-500">
+                  <span class="font-medium" x-text="food?.placed_at"
+                    >Placed At:</span
+                  >
+                </p>
+              </div>
+
+              <!-- Action Button -->
+              <button
+                class="w-full bg-orange-500 text-white text-sm font-semibold py-2 rounded-lg mt-4 hover:bg-orange-600 transition-colors"
+              >
+                Order Again
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+      <p
+        x-show="!orders"
+        class="font-bold"
+        :class="darkMode ? 'text-white' : 'text-black'"
+      >
+        No Active Orders Found
+      </p>
+      <button
+        @click="console.log(await fetchOrders())"
+        class="w-full bg-orange-500 text-white text-sm font-semibold py-2 rounded-lg mt-4 hover:bg-orange-600 transition-colors"
+      >
+        fetch orders
+      </button>
     </div>
-    
+
     <!-- Past Orders -->
-    <div x-show="goTo === 'past_orders'" class="flex flex-col items-center justify-center">
-      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">No Past Orders Found</p>
+    <div
+      x-show="goTo === 'past_orders'"
+      class="flex flex-col items-center justify-center"
+    >
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">
+        No Past Orders Found
+      </p>
     </div>
-    
+
     <!-- Return Requests -->
-    <div x-show="goTo === 'return_requests'" class="flex flex-col items-center justify-center">
-      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">No Return Requests</p>
+    <div
+      x-show="goTo === 'return_requests'"
+      class="flex flex-col items-center justify-center"
+    >
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">
+        No Return Requests
+      </p>
     </div>
-    
+
     <!-- Orders Cancel -->
-    <div x-show="goTo === 'orders_cancel'" class="flex flex-col items-center justify-center">
-      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">No Rejected/Cancel Order Found</p>
+    <div
+      x-show="goTo === 'orders_cancel'"
+      class="flex flex-col items-center justify-center"
+    >
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">
+        No Rejected/Cancel Order Found
+      </p>
     </div>
   </div>
 </div>

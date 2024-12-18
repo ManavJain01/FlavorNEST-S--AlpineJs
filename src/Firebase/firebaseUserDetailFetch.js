@@ -27,8 +27,7 @@ export default function firebaseUserDetailFetch() {
         const querySnapshot = await getDocs(userRef);
 
         if (!querySnapshot.empty) {
-          // Assuming UID is unique, use the first matching document
-          // this.userDetails = querySnapshot.docs[0].data();
+          //Filtering the user details based on the uid
           const userData = querySnapshot.docs.filter(
             (user) => user.data().uid === this.uid
           );
@@ -39,6 +38,39 @@ export default function firebaseUserDetailFetch() {
         }
       } catch (error) {
         console.error("Error fetching user details:", error.message);
+      }
+    },
+
+    // Fetch orders based on UID
+    async fetchOrders() {
+      try {
+        const myStore = Alpine.store("applicationStore");
+        const firebaseConfig = myStore().firebaseConfig;
+
+        // Initialize Firebase app and Firestore
+        const app = await initializeApp(firebaseConfig);
+        const db = await getFirestore(app);
+
+        // Query to get orders from Firestore for the specific user
+        const ordersRef = await collection(db, "orders");
+        const ordersQuery = await query(
+          ordersRef,
+          await where("uid", "==", this.uid)
+        );
+
+        const querySnapshot = await getDocs(ordersQuery);
+        console.log(querySnapshot);
+
+        if (!querySnapshot.empty) {
+          console.log("her..");
+          this.orders = await querySnapshot.docs.map((doc) => ({
+            id: doc.id, // Firestore document ID
+            ...doc.data(), // Firestore document data
+          }));
+          console.log("Fetched Orders:", this.orders);
+        }
+      } catch (error) {
+        console.error("Error fetching orders: ", error);
       }
     },
   };

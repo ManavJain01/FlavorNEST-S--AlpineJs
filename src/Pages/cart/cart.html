@@ -153,7 +153,8 @@
       </div>
 
       <p class="flex justify-between pb-3 border-y">
-        Amount Payable <span class="font-bold">₹ 291.46</span>
+        Amount Payable
+        <span class="font-bold" x-text="'₹'+(total+5.20+13)"></span>
       </p>
       <button
         @click="getProductForPayment()"

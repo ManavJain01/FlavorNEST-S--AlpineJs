@@ -6,11 +6,13 @@ import injectComponents from "./src/js/component_Injection.js";
 import firebaseProductFetch from "./src/Firebase/firebaseProductFetch.js";
 import firebaseUserDetailFetch from "./src/Firebase/firebaseUserDetailFetch.js";
 import stripePay from "./src/Stripe/stripePay.js";
+import orderPlaced from "./src/Firebase/OrderPlaced.js";
 export default function mainEntry() {
   return {
     ...store(),
     ...routes(),
     ...firebase(),
+    ...orderPlaced(),
     ...injectComponents(),
     ...firebaseProductFetch(),
     ...firebaseUserDetailFetch(),
