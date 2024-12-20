@@ -1,7 +1,7 @@
 export default function globalStore() {
   return {
     darkMode: JSON.parse(localStorage.getItem("darkMode")) || false,
-    cart: [],
+    cart: JSON.parse(localStorage.getItem("cart")) || [],
     isLogin: localStorage.getItem("authToken") ? true : false,
     // isLogin: true,
 

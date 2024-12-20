@@ -3,7 +3,6 @@ import {
   getFirestore,
   collection,
   addDoc,
-  doc, setDoc
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
 export default function firebaseUserDetailFetch() {
@@ -12,32 +11,32 @@ export default function firebaseUserDetailFetch() {
     userDetails: null,
     uid: localStorage.getItem("authToken"), // User UID from localStorage
     async saveOrder() {
+      // Importing My Store
       const myStore = Alpine.store("applicationStore");
-      console.log("uid : ....", this.uid);
 
       // Your Firebase configuration
       const firebaseConfig = myStore().firebaseConfig;
       const app = await initializeApp(firebaseConfig);
       const db = await getFirestore(app);
-      const cart = localStorage.getItem("cart");
-      const orderProducts = JSON.parse(cart);
-
+      
+      // Order Details
+      const orderDetails = JSON.parse(localStorage.getItem("cart"));
       const orderId = "order_" + Date.now();
+
       try {
         // Save the order to Firestore
-        const docRef = await doc(db, "orders", orderId);
-
-        await setDoc(docRef, {
-          items: orderProducts,
-          status: "active_order", // Set the initial status of the order
-          placed_at: new Date(),
-          updated_at: new Date(),
+        const docRef = await addDoc(collection(db, "orders"), {
+          items: orderDetails,
+          status: "active_orders", // Set the initial status of the order
+          orderId: orderId,
           uid: this.uid,
-          orderId: orderId
+          placed_at: new Date(),
+          updated_at: new Date()
         });
 
         console.log("Order saved successfully with ID:", docRef.id);
 
+        // Clear localStorage to prevent duplicate saves
         localStorage.removeItem("cart");
       } catch (error) {
         console.error("Error saving order:", error);

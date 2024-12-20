@@ -1,6 +1,6 @@
-<div x-data="{ orders : fetchOrders() }" class="flex items-center gap-5">
-  <!-- Navbar -->
-  <ul class="flex flex-col w-[20rem]">
+<div x-data="{ orders : fetchOrders() }" class="flex gap-5">
+  <!-- Side Navbar -->
+  <ul class="flex flex-col top-0 w-[20rem]">
     <li
       class="px-5 py-2 hover:border-l-4 hover:border-orange-600 transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
     >
@@ -72,32 +72,68 @@
     <!-- Filterred Orders -->
     <!-- Active Orders -->
     <div
-      x-show="goTo === 'active_orders'"
-      class="flex flex-wrap items-center justify-center"
+      x-show="goTo === 'active_orders && !orders'"
+      class="flex flex-wrap items-center justify-start gap-5"
     >
+      <p
+        class="font-bold"
+        :class="darkMode ? 'text-white' : 'text-black'"
+      >
+        No Active Orders Found
+      </p>
+    </div>
+
+    <!-- Past Orders -->
+    <div
+      x-show="goTo === 'past_orders' && !orders"
+      class="flex flex-col items-center justify-center"
+    >
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">
+        No Past Orders Found
+      </p>
+    </div>
+
+    <!-- Return Requests -->
+    <div
+      x-show="goTo === 'return_requests && !orders'"
+      class="flex flex-col items-center justify-center"
+    >
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">
+        No Return Requests
+      </p>
+    </div>
+
+    <!-- Orders Cancel -->
+    <div
+      x-show="goTo === 'orders_cancel && !orders'"
+      class="flex flex-col items-center justify-center"
+    >
+      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">
+        No Rejected/Cancel Order Found
+      </p>
+    </div>
+
+    <!-- All Products -->
+    <div class="flex flex-wrap gap-5">
       <template x-for="food in orders" :key="food?.orderId">
-        <div
-          x-show="orders"
-          class="bg-gray-100 min-h-screen flex items-center justify-center px-5"
-        >
+        <template x-if="goTo === food?.status">
           <!-- Order Card -->
-          <div
-            class="w-full bg-white rounded-lg shadow-md overflow-hidden"
-          >
+          <div x-show="orders" class="rounded-lg shadow-md overflow-hidden" :class="darkMode && 'shadow-gray-700'">
             <!-- Image Section -->
             <img
               :src="food.items[0]?.img || ''"
               alt="Chicken Biryani"
               class="w-full h-40 object-cover"
             />
-
+  
             <!-- Order Details -->
             <div class="p-5">
               <!-- Title and Status -->
               <div class="flex justify-between items-center">
                 <h2
                   x-text="food.items[0]?.item"
-                  class="text-lg font-semibold text-gray-800"
+                  class="text-lg font-semibold"
+                  :class="!darkMode && 'text-gray-800'"
                 ></h2>
                 <span
                   x-text="food?.status"
@@ -105,23 +141,25 @@
                 >
                 </span>
               </div>
-
+  
               <!-- Vendor and Category -->
               <p class="text-sm text-gray-600 mt-2">
-                <span x-text="food.items[0]?.vendor" class="font-semibold">Vendor:</span>
+                <span x-text="food.items[0]?.vendor" class="font-semibold"
+                  >Vendor:</span
+                >
               </p>
               <p class="text-sm text-gray-600">
                 <span x-text="food.items[0]?.category" class="font-semibold"
                   >Category:</span
                 >
               </p>
-
+  
               <!-- Description -->
               <p
                 x-text="food.items[0]?.description"
                 class="text-gray-700 text-sm mt-3"
               ></p>
-
+  
               <!-- Price and Date -->
               <div class="flex justify-between items-center mt-4">
                 <p
@@ -133,7 +171,7 @@
                   <!-- <span class="font-medium" x-text="food?.placed_at"></span> -->
                 </p>
               </div>
-
+  
               <!-- Action Button -->
               <button
                 class="w-full bg-orange-500 text-white text-sm font-semibold py-2 rounded-lg mt-4 hover:bg-orange-600 transition-colors"
@@ -142,45 +180,8 @@
               </button>
             </div>
           </div>
-        </div>
+        </template>
       </template>
-      <p
-        x-show="!orders"
-        class="font-bold"
-        :class="darkMode ? 'text-white' : 'text-black'"
-      >
-        No Active Orders Found
-      </p>
-    </div>
-
-    <!-- Past Orders -->
-    <div
-      x-show="goTo === 'past_orders'"
-      class="flex flex-col items-center justify-center"
-    >
-      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">
-        No Past Orders Found
-      </p>
-    </div>
-
-    <!-- Return Requests -->
-    <div
-      x-show="goTo === 'return_requests'"
-      class="flex flex-col items-center justify-center"
-    >
-      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">
-        No Return Requests
-      </p>
-    </div>
-
-    <!-- Orders Cancel -->
-    <div
-      x-show="goTo === 'orders_cancel'"
-      class="flex flex-col items-center justify-center"
-    >
-      <p class="font-bold" :class="darkMode ? 'text-white' : 'text-black'">
-        No Rejected/Cancel Order Found
-      </p>
     </div>
   </div>
 </div>
