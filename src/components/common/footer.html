@@ -1,7 +1,8 @@
 <div
   class="py-3 flex flex-col gap-5"
 >
-  <div class="flex items-center justify-around">
+  <div class="flex flex-wrap items-center justify-start md:justify-around gap-5 px-5">
+    <!-- First Section -->
     <section class="flex flex-col gap-3 items-start">
       <h1 class="font-bold text-xl">Quick Links</h1>
       <button @click="currentPage = 'careers'" class="text-gray-500">Careers</button>
@@ -12,6 +13,7 @@
       <button @click="currentPage = 'faqs'" class="text-gray-500">FAQ's</button>
     </section>
 
+    <!-- Second Section -->
     <section class="flex flex-col gap-3">
       <h1 class="font-bold text-xl">Contact Us</h1>
       <p class="text-gray-500">
@@ -28,6 +30,7 @@
       </p>
     </section>
 
+    <!-- Third Section -->
     <section class="flex flex-col gap-3">
       <h1 class="font-bold text-xl">Find Our App On Mobile</h1>
 
@@ -37,6 +40,7 @@
       </div>
     </section>
 
+    <!-- Fourth Section -->
     <section class="flex flex-col gap-3">
       <!-- Payment Methods -->
       <h1 class="font-bold text-xl">Payment Methods</h1>
