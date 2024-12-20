@@ -11,7 +11,7 @@
       <img class="w-[9rem]" src="./assets/images/image.png" alt="" />
     </button>
     <!-- Location/Search Functionality -->
-    <section class="flex items-center px-2 border rounded-xl shadow-md">
+    <section class="relative flex items-center px-2 border rounded-xl shadow-md">
       <i class="fa-solid fa-location-dot text-default"></i>
       <!-- Location -->
       <input
@@ -33,11 +33,26 @@
       <i class="fa fa-search text-default text-sm mx-2"></i>
       <!-- Search Functionality -->
       <input
+        type="text"
         placeholder="Search"
+        @input="searchProductsAndVendors(event.target.value)"
         class="text-sm w-[15rem] px-2 py-2 outline-none"
         :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
-        type="text"
       />
+
+      <template x-if="Array.isArray(searchedItems) && searchedItems.length > 0">
+        <div class="absolute top-[52px] right-0 bg-white flex flex-col gap-2 w-[18rem] max-h-[10rem] py-2 shadow-xl shadow-gray-600 rounded-xl overflow-y-scroll">
+          <template x-for="item in searchedItems">
+            <div @click="viewProduct(item)" class="flex flex-col gap-2 cursor-pointer">
+              <div class="flex items-end justify-between gap-1 px-5">
+                <p x-text="item?.item" class="text-lg font-bold"></p>
+                <p x-text="item?.vendor" class="text-xs font-bold text-gray-500"></p>
+              </div>
+              <hr class="border border-gray-300">
+            </div>
+          </template>
+        </div>
+      </template>
     </section>
 
     <!-- NavOptions -->

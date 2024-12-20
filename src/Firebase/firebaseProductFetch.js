@@ -11,6 +11,7 @@ import {
 export default function fetchFoods() {
   return {
     foods: [],
+    searchedItems: [],
     loading: false, // New property for the loader state
     async fetchProducts() {
       this.loading = true;
@@ -53,11 +54,43 @@ export default function fetchFoods() {
 
         // Assign the combined data to the foods array
         this.foods = productsWithVendors;
+
+        // Setting Foods to LocalStorage
+        const storingFoods = JSON.stringify(this.foods);
+        localStorage.setItem("foods", storingFoods);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
         this.loading = false; // Stop the loader
       }
     },
+
+    async searchProductsAndVendors(input) {
+      const foods = JSON.parse(localStorage.getItem("foods")) || this.foods;
+
+      const searchItems = [];
+      console.log("input:", input);
+      
+      // Check if the input is valid
+      if (!input || input.trim() === "") {
+        console.log("No search input provided.");
+        this.searchedItems = [];
+        return [];
+      }
+
+      // Convert the input to lowercase for case-insensitive searching
+      const query = input.trim().toLowerCase();
+
+      // Map through the foods array and filter matching items
+      foods.forEach((food) => {
+        // Check if the food name or vendor matches the query
+        if (food.item.toLowerCase().includes(query) || (food.vendor && food.vendor.toLowerCase().includes(query))) {
+          searchItems.push(food);
+        }
+      });
+
+      // Optionally log the search results or return them
+      this.searchedItems = searchItems;      
+    }
   };
 }

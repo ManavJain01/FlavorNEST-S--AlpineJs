@@ -125,6 +125,9 @@ export default function router() {
       localStorage.setItem("productCard", JSON.stringify(product));
       this.productCard = product;
       this.currentPage = "productCard"; // Change page to productCard
+      const myStore = Alpine.store('applicationStore');
+      myStore().searchedItems = [];
+      window.location.reload();
     },
   };
 }
