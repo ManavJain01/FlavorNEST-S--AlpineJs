@@ -81,9 +81,7 @@
           class="bg-gray-100 min-h-screen flex items-center justify-center px-5"
         >
           <!-- Order Card -->
-          <div
-            class="w-full bg-white rounded-lg shadow-md overflow-hidden"
-          >
+          <div class="w-full bg-white rounded-lg shadow-md overflow-hidden">
             <!-- Image Section -->
             <img
               :src="food.items[0]?.img || ''"
@@ -108,7 +106,9 @@
 
               <!-- Vendor and Category -->
               <p class="text-sm text-gray-600 mt-2">
-                <span x-text="food.items[0]?.vendor" class="font-semibold">Vendor:</span>
+                <span x-text="food.items[0]?.vendor" class="font-semibold"
+                  >Vendor:</span
+                >
               </p>
               <p class="text-sm text-gray-600">
                 <span x-text="food.items[0]?.category" class="font-semibold"

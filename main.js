@@ -7,6 +7,7 @@ import firebaseProductFetch from "./src/Firebase/firebaseProductFetch.js";
 import firebaseUserDetailFetch from "./src/Firebase/firebaseUserDetailFetch.js";
 import stripePay from "./src/Stripe/stripePay.js";
 import orderPlaced from "./src/Firebase/OrderPlaced.js";
+// import serviceWorker from "./service-worker.js";
 export default function mainEntry() {
   return {
     ...store(),
@@ -18,5 +19,6 @@ export default function mainEntry() {
     ...firebaseUserDetailFetch(),
     ...loginHandler(),
     ...stripePay(),
+    // ...serviceWorker(),
   };
 }
