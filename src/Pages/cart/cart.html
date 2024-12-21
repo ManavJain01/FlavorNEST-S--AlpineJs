@@ -157,7 +157,7 @@
         <span class="font-bold" x-text="'₹'+(total+5.20+13)"></span>
       </p>
       <button
-        @click="getProductForPayment()"
+        @click=" isLogin ? getProductForPayment() : currentPage = 'login' "
         class="hover-animated-button font-semibold text-xs bg-orange-500 px-4 py-2 border border-orange-500 rounded-full"
         :class="darkMode ? 'text-white' : 'text-white hover:text-black'"
       >
