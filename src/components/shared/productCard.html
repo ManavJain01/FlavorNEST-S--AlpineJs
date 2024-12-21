@@ -1,12 +1,12 @@
 <div class="flex flex-col gap-5">
   <div
     x-data="{product: productCard, quantity: this?.product?.quantity || 1 }"
-    class="flex gap-5"
+    class="flex flex-wrap md:flex-nowrap gap-5"
   >
     <img
       :src="product.img || 'https://via.placeholder.com/150'"
       alt="product image"
-      class="h-[35rem] w-[40rem]"
+      class="h-[35rem] w-full md:w-[40rem]"
     />
 
     <div class="flex flex-col gap-2">

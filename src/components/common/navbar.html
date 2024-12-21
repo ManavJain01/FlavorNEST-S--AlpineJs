@@ -4,7 +4,7 @@
     :style="{ transform: `translateX(-${sliderCurrentIndex * slideWidth}%)` }">
     <!-- Image Items -->
     <template x-for="item in sliderItems" :key="item.id">
-      <div class="w-[calc(100%/9)] flex-shrink-0 flex flex-col items-center gap-2">
+      <div class="w-[calc(100%/2)] sm:w-[calc(100%/5)] md:w-[calc(100%/9)] flex-shrink-0 flex flex-col items-center gap-2">
         <template x-if="currentPage === 'home'">
           <img :src="item.img_url" alt="product img" class="w-20 h-20 rounded-full">
         </template>

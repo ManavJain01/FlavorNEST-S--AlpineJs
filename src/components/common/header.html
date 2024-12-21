@@ -24,7 +24,7 @@
         <!-- Location -->
         <input
           placeholder="Lucknow, Uttar Pradesh, India"
-          class="text-sm w-[15rem] px-2 py-4 outline-none"
+          class="text-xs w-[50%] md:w-[15rem] px-2 py-4 outline-none"
           :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
           type="text"
         />
@@ -36,7 +36,7 @@
           }
         }"
         ></div>
-        <i class="fa-solid text-gray-400 mr-7 fa-caret-down -ml-10"></i>
+        <i :class="darkMode ? 'bg-black' : 'bg-white'" class="fa-solid text-gray-400 py-2 pl-2 px-5 fa-caret-down -ml-10"></i>
         <p>|</p>
         <i class="fa fa-search text-default text-sm mx-2"></i>
         <!-- Search Functionality -->
@@ -44,7 +44,7 @@
           type="text"
           placeholder="Search"
           @input="searchProductsAndVendors(event.target.value)"
-          class="text-sm w-[15rem] px-2 py-2 outline-none"
+          class="text-xs w-[50%] md:w-[15rem] px-2 py-2 outline-none"
           :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
         />
 
@@ -219,7 +219,7 @@
   <!-- Navbar for small screen -->
   <div
     x-data="{ openNavbar: false }"
-    class="fixed top-5 right-5 md:hidden flex items-center gap-3"
+    class="z-20 fixed top-5 right-5 md:hidden flex items-center gap-3"
   >
     <!-- Cart Button -->
     <button @click="currentPage = 'cart'" class="relative">
@@ -234,71 +234,79 @@
     </button>
 
     <!-- Ham Menu Icon -->
-    <button @click="openNavbar = true">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+    <!-- Ham Menu Icon -->
+  <button @click="openNavbar = !openNavbar" aria-expanded="openNavbar" aria-controls="navbar-menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
 
-    <template x-if="openNavbar">
-      <div
-        :class="darkMode ? 'bg-black shadow-gray-700' : 'bg-white'"
-        class="absolute -top-5 -right-5 text-xs flex flex-col gap-3 h-lvh w-[15rem] px-5 py-2 shadow-md"
-      >
-        <!-- Close Button -->
-        <button @click="openNavbar = false" class="ml-auto">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+  <template x-if="openNavbar">
+    <nav
+      id="navbar-menu"
+      :class="darkMode ? 'bg-black shadow-gray-700' : 'bg-white'"
+      class="absolute -top-5 -right-5 text-xs flex flex-col gap-3 h-lvh w-[15rem] px-5 py-2 shadow-md"
+    >
+      <!-- Close Button -->
+      <button @click="openNavbar = false" class="ml-auto" type="button">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
-        <!-- Nav Options -->
-        <div class="flex flex-col gap-2">
-          <!-- If Not Login -->
-          <div x-show="!isLogin" class="flex flex-col gap-2">
-            <button @click="currentPage = 'login'" class="mr-auto">
+      <!-- Nav Options -->
+      <div class="flex flex-col gap-2">
+        <!-- If Not Login -->
+        <template x-if="!isLogin">
+          <div class="flex flex-col gap-2">
+            <button @click="currentPage = 'login'" class="mr-auto" type="button">
               Login
             </button>
             <hr />
-            <button @click="currentPage = 'register'" class="mr-auto">
+            <button @click="currentPage = 'register'" class="mr-auto" type="button">
               Register
             </button>
           </div>
-          <!-- If Login -->
-          <div x-show="isLogin" class="flex flex-col gap-2">
-            <button @click="currentPage = 'user_profile'" class="mr-auto">
+        </template>
+
+        <!-- If Login -->
+        <template x-if="isLogin">
+          <div class="flex flex-col gap-2">
+            <button @click="currentPage = 'user_profile'" class="mr-auto" type="button">
               Profile
             </button>
             <hr />
-            <button @click="logout()" class="mr-auto">Logout</button>
+            <button @click="logout()" class="mr-auto" type="button">Logout</button>
           </div>
-          <hr />
-          <button class="mr-auto">Wishlists</button>
-          <hr />
-          <button @click="currentPage = 'cart'" class="mr-auto">
-            Viewcart
-          </button>
-          <hr />
-          <button @click="currentPage = 'careers'" class="mr-auto">
-            Careers
-          </button>
-          <hr />
-          <button @click="currentPage = 'vendor_registration'" class="mr-auto">
-            Vendor Registration
-          </button>
-          <hr />
-          <button @click="currentPage = 'privacy_policies'" class="mr-auto">
-            Privacy Policies
-          </button>
-          <hr />
-          <button @click="currentPage = 'terms_conditions'" class="mr-auto">
-            Terms And Conditions - FoodNEST(S)
-          </button>
-          <hr />
-          <button @click="currentPage = 'faqs'" class="mr-auto">FAQ's</button>
-          <hr />
-          <button class="mr-auto">En Language</button>
-          <hr />
-          <button class="mr-auto">INR Currency</button>
-        </div>
+        </template>
+        <hr />
+        <button class="mr-auto" type="button">Wishlists</button>
+        <hr />
+        <button @click="currentPage = 'cart'" class="mr-auto">
+          Viewcart
+        </button>
+        <hr />
+        <button @click="currentPage = 'careers'" class="mr-auto">
+          Careers
+        </button>
+        <hr />
+        <button @click="currentPage = 'vendor_registration'" class="mr-auto">
+          Vendor Registration
+        </button>
+        <hr />
+        <button @click="currentPage = 'privacy_policies'" class="mr-auto">
+          Privacy Policies
+        </button>
+        <hr />
+        <button @click="currentPage = 'terms_conditions'" class="mr-auto">
+          Terms And Conditions - FoodNEST(S)
+        </button>
+        <hr />
+        <button @click="currentPage = 'faqs'" class="mr-auto">FAQ's</button>
+        <hr />
+        <button class="mr-auto">En Language</button>
+        <hr />
+        <button class="mr-auto">INR Currency</button>
       </div>
-    </template>
+    </nav>
+  </template>
+
   </div>
 
   <div id="navbar" x-init="navbarComponent()" x-html="navbarContent"></div>
