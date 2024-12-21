@@ -4,185 +4,208 @@
 >
   <div
     x-data="{ open : false, openAccount:false }"
-    class="flex items-center gap-5 justify-around px-10 relative py-3"
+    class="flex items-center gap-5 justify-between px-10 relative py-3"
   >
-    <!-- Logo -->
-    <button @click="currentPage = 'home'">
-      <img class="w-[9rem]" src="./assets/images/logo.png" alt="" />
-    </button>
-    <!-- Location/Search Functionality -->
-    <section
-      class="relative flex items-center px-2 border rounded-xl shadow-md"
-    >
-      <i class="fa-solid fa-location-dot text-default"></i>
-      <!-- Location -->
-      <input
-        placeholder="Lucknow, Uttar Pradesh, India"
-        class="text-sm w-[15rem] px-2 py-4 outline-none"
-        :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
-        type="text"
-      />
-      <div
-        x-data="{
-        open: false,
-        accept() {  
-          console.log('accepted')
-        }
-      }"
-      ></div>
-      <i class="fa-solid text-gray-400 mr-7 fa-caret-down -ml-10"></i>
-      <p>|</p>
-      <i class="fa fa-search text-default text-sm mx-2"></i>
-      <!-- Search Functionality -->
-      <input
-        type="text"
-        placeholder="Search"
-        @input="searchProductsAndVendors(event.target.value)"
-        class="text-sm w-[15rem] px-2 py-2 outline-none"
-        :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
-      />
-
-      <template x-if="Array.isArray(searchedItems) && searchedItems.length > 0">
-        <div
-          class="absolute top-[52px] right-0 flex flex-col gap-2 w-[18rem] max-h-[10rem] py-2 shadow-xl shadow-gray-600 rounded-xl overflow-y-scroll"
-          :class="darkMode ? 'bg-black' : 'bg-white'"
-        >
-          <template x-for="item in searchedItems">
-            <div
-              @click="viewProduct(item)"
-              class="flex flex-col gap-2 cursor-pointer"
-            >
-              <div class="flex items-end justify-between gap-1 px-5">
-                <p x-text="item?.item" class="text-lg font-bold"></p>
-                <p
-                  x-text="item?.vendor"
-                  class="text-xs font-bold text-gray-500"
-                ></p>
-              </div>
-              <hr class="border border-gray-300" />
-            </div>
-          </template>
-        </div>
-      </template>
-    </section>
-
-    <!-- NavOptions -->
-    <button @click="open=!open" class="text-gray-500 ml-auto flex">
-      Quick Links
-      <svg
-        class="h-4 w-4 mt-1.5 transition-all"
-        :class="{'rotate-90': open}"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="size-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="m8.25 4.5 7.5 7.5-7.5 7.5"
+    <div class="flex items-center flex-wrap gap-5">
+      <!-- Logo -->
+      <button @click="currentPage = 'home'">
+        <img
+          class="min-w-[9rem] w-[9rem]"
+          src="./assets/images/logo.png"
+          alt=""
         />
-      </svg>
-    </button>
-    <!-- Quick Links NavOptions -->
-    <ul
-      x-show="open"
-      @click.outside="open = false"
-      x-transition
-      class="absolute w-[170px] shadow-md top-[3rem] right-[20rem] mt-2 rounded border z-10"
-      :class="darkMode ? 'bg-black' : 'bg-white'"
-    >
-      <li
-        class="py-3 px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
-      >
-        <button @click="currentPage = 'careers'" class="items-center" href="#">
-          Careers
-        </button>
-      </li>
-      <li
-        class="py-3 px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
-      >
-        <button
-          @click="currentPage = 'vendor_registration'"
-          class="items-center"
-        >
-          Vendor Registration
-        </button>
-      </li>
-      <li
-        class="py-3 px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
-      >
-        <button @click="currentPage = 'privacy_policies'" class="items-center">
-          Privacy Policy
-        </button>
-      </li>
-      <li
-        class="py-3 /px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
-      >
-        <button @click="currentPage = 'terms_conditions'" class="items-center">
-          Term and Conditions-FoodNEST(S)
-        </button>
-      </li>
-      <li
-        class="py-3 px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
-      >
-        <button @click="currentPage = 'faqs'" class="items-center">FAQs</button>
-      </li>
-    </ul>
-    <p class="text-gray-500">
-      <i class="fa-solid fa-language mx-2"></i>En Language
-    </p>
-    <button @click="openAccount=!openAccount" class="text-gray-500">
-      <i class="fa-solid fa-user text-gray-500 mx-2"></i>My Account
-    </button>
-    <!-- myAccount NavOptions -->
-    <ul
-      x-show="openAccount"
-      @click.outside="openAccount = false"
-      x-transition
-      class="absolute w-[130px] shadow-md right-[2rem] top-12 mt-2 rounded border z-10"
-      :class="darkMode ? 'bg-black' : 'bg-white'"
-    >
-      <!-- If Not LoggedIn -->
-      <li
-        x-show="!isLogin"
-        class="py-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
-      >
-        <button @click="currentPage = 'login'" class="px-2" href="#">
-          Login
-        </button>
-      </li>
-      <li
-        x-show="!isLogin"
-        class="py-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
-      >
-        <button @click="currentPage = 'register'" class="px-2" href="#">
-          Register
-        </button>
-      </li>
+      </button>
 
-      <!-- If Logged In -->
-      <li
-        x-show="isLogin"
-        class="py-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+      <!-- Location/Search Functionality -->
+      <section
+        class="relative flex items-center px-2 border rounded-xl shadow-md"
       >
-        <button @click="currentPage = 'user_profile'" class="px-2" href="#">
-          Profile
-        </button>
-      </li>
-      <li
-        x-show="isLogin"
-        class="py-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        <i class="fa-solid fa-location-dot text-default"></i>
+        <!-- Location -->
+        <input
+          placeholder="Lucknow, Uttar Pradesh, India"
+          class="text-sm w-[15rem] px-2 py-4 outline-none"
+          :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
+          type="text"
+        />
+        <div
+          x-data="{
+          open: false,
+          accept() {  
+            console.log('accepted')
+          }
+        }"
+        ></div>
+        <i class="fa-solid text-gray-400 mr-7 fa-caret-down -ml-10"></i>
+        <p>|</p>
+        <i class="fa fa-search text-default text-sm mx-2"></i>
+        <!-- Search Functionality -->
+        <input
+          type="text"
+          placeholder="Search"
+          @input="searchProductsAndVendors(event.target.value)"
+          class="text-sm w-[15rem] px-2 py-2 outline-none"
+          :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
+        />
+
+        <template
+          x-if="Array.isArray(searchedItems) && searchedItems.length > 0"
+        >
+          <div
+            class="absolute top-[52px] right-0 bg-white flex flex-col gap-2 w-[18rem] max-h-[10rem] py-2 shadow-xl shadow-gray-600 rounded-xl overflow-y-scroll"
+          >
+            <template x-for="item in searchedItems">
+              <div
+                @click="viewProduct(item)"
+                class="flex flex-col gap-2 cursor-pointer"
+              >
+                <div class="flex items-end justify-between gap-1 px-5">
+                  <p x-text="item?.item" class="text-lg font-bold"></p>
+                  <p
+                    x-text="item?.vendor"
+                    class="text-xs font-bold text-gray-500"
+                  ></p>
+                </div>
+                <hr class="border border-gray-300" />
+              </div>
+            </template>
+          </div>
+        </template>
+      </section>
+    </div>
+
+    <div class="hidden md:flex gap-5">
+      <!-- NavOptions -->
+      <button @click="open=!open" class="text-gray-500 ml-auto flex">
+        Quick Links
+        <svg
+          class="h-4 w-4 mt-1.5 transition-all"
+          :class="{'rotate-90': open}"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+          />
+        </svg>
+      </button>
+      <!-- Quick Links NavOptions -->
+      <ul
+        x-show="open"
+        @click.outside="open = false"
+        x-transition
+        class="absolute w-[170px] shadow-md top-[3rem] right-[20rem] mt-2 rounded border z-10"
+        :class="darkMode ? 'bg-black' : 'bg-white'"
       >
-        <button @click="logout()" class="px-2" href="#">Logout</button>
-      </li>
-    </ul>
+        <li
+          class="py-3 px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        >
+          <button
+            @click="currentPage = 'careers'"
+            class="items-center"
+            href="#"
+          >
+            Careers
+          </button>
+        </li>
+        <li
+          class="py-3 px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        >
+          <button
+            @click="currentPage = 'vendor_registration'"
+            class="items-center"
+          >
+            Vendor Registration
+          </button>
+        </li>
+        <li
+          class="py-3 px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        >
+          <button
+            @click="currentPage = 'privacy_policies'"
+            class="items-center"
+          >
+            Privacy Policy
+          </button>
+        </li>
+        <li
+          class="py-3 /px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        >
+          <button
+            @click="currentPage = 'terms_conditions'"
+            class="items-center"
+          >
+            Term and Conditions-FoodNEST(S)
+          </button>
+        </li>
+        <li
+          class="py-3 px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        >
+          <button @click="currentPage = 'faqs'" class="items-center">
+            FAQs
+          </button>
+        </li>
+      </ul>
+      <p class="text-gray-500">
+        <i class="fa-solid fa-language mx-2"></i>En Language
+      </p>
+      <button @click="openAccount=!openAccount" class="text-gray-500">
+        <i class="fa-solid fa-user text-gray-500 mx-2"></i>My Account
+      </button>
+      <!-- myAccount NavOptions -->
+      <ul
+        x-show="openAccount"
+        @click.outside="openAccount = false"
+        x-transition
+        class="absolute w-[130px] shadow-md right-[2rem] top-12 mt-2 rounded border z-10"
+        :class="darkMode ? 'bg-black' : 'bg-white'"
+      >
+        <!-- If Not LoggedIn -->
+        <li
+          x-show="!isLogin"
+          class="py-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        >
+          <button @click="currentPage = 'login'" class="px-2" href="#">
+            Login
+          </button>
+        </li>
+        <li
+          x-show="!isLogin"
+          class="py-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        >
+          <button @click="currentPage = 'register'" class="px-2" href="#">
+            Register
+          </button>
+        </li>
+
+        <!-- If Logged In -->
+        <li
+          x-show="isLogin"
+          class="py-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        >
+          <button @click="currentPage = 'user_profile'" class="px-2" href="#">
+            Profile
+          </button>
+        </li>
+        <li
+          x-show="isLogin"
+          class="py-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+        >
+          <button @click="logout()" class="px-2" href="#">Logout</button>
+        </li>
+      </ul>
+    </div>
   </div>
+  <!-- Cart Button -->
   <button
     @click="currentPage = 'cart'"
-    class="relative text-[#e76f0a] ml-auto px-10"
+    class="hidden md:block relative text-[#e76f0a] ml-auto px-10"
   >
     <i class="fa-solid fa-cart-shopping text-xl"></i>
     <template x-if="cart.length > 0">
@@ -192,6 +215,91 @@
       ></span>
     </template>
   </button>
+
+  <!-- Navbar for small screen -->
+  <div
+    x-data="{ openNavbar: false }"
+    class="fixed top-5 right-5 md:hidden flex items-center gap-3"
+  >
+    <!-- Cart Button -->
+    <button @click="currentPage = 'cart'" class="relative">
+      <i class="fa-solid fa-cart-shopping"></i>
+
+      <template x-if="cart.length > 0">
+        <span
+          x-text="cart.length"
+          class="absolute -top-[10px] left-3 text-xs"
+        ></span>
+      </template>
+    </button>
+
+    <!-- Ham Menu Icon -->
+    <button @click="openNavbar = true">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <template x-if="openNavbar">
+      <div
+        :class="darkMode ? 'bg-black shadow-gray-700' : 'bg-white'"
+        class="absolute -top-5 -right-5 text-xs flex flex-col gap-3 h-lvh w-[15rem] px-5 py-2 shadow-md"
+      >
+        <!-- Close Button -->
+        <button @click="openNavbar = false" class="ml-auto">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Nav Options -->
+        <div class="flex flex-col gap-2">
+          <!-- If Not Login -->
+          <div x-show="!isLogin" class="flex flex-col gap-2">
+            <button @click="currentPage = 'login'" class="mr-auto">
+              Login
+            </button>
+            <hr />
+            <button @click="currentPage = 'register'" class="mr-auto">
+              Register
+            </button>
+          </div>
+          <!-- If Login -->
+          <div x-show="isLogin" class="flex flex-col gap-2">
+            <button @click="currentPage = 'user_profile'" class="mr-auto">
+              Profile
+            </button>
+            <hr />
+            <button @click="logout()" class="mr-auto">Logout</button>
+          </div>
+          <hr />
+          <button class="mr-auto">Wishlists</button>
+          <hr />
+          <button @click="currentPage = 'cart'" class="mr-auto">
+            Viewcart
+          </button>
+          <hr />
+          <button @click="currentPage = 'careers'" class="mr-auto">
+            Careers
+          </button>
+          <hr />
+          <button @click="currentPage = 'vendor_registration'" class="mr-auto">
+            Vendor Registration
+          </button>
+          <hr />
+          <button @click="currentPage = 'privacy_policies'" class="mr-auto">
+            Privacy Policies
+          </button>
+          <hr />
+          <button @click="currentPage = 'terms_conditions'" class="mr-auto">
+            Terms And Conditions - FoodNEST(S)
+          </button>
+          <hr />
+          <button @click="currentPage = 'faqs'" class="mr-auto">FAQ's</button>
+          <hr />
+          <button class="mr-auto">En Language</button>
+          <hr />
+          <button class="mr-auto">INR Currency</button>
+        </div>
+      </div>
+    </template>
+  </div>
 
   <div id="navbar" x-init="navbarComponent()" x-html="navbarContent"></div>
 </div>

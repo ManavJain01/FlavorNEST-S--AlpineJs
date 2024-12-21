@@ -15,8 +15,8 @@
     </button>
   </div>
 
-  <div x-show="cart.length>0" class="flex justify-around gap-5">
-    <div class="flex flex-col gap-3 w-full">
+  <div x-show="cart.length>0" class="flex flex-wrap justify-between gap-2">
+    <div class="flex flex-col gap-3 w-[60rem]">
       <p
         class="font-semibold text-2xl"
         :class="darkMode ? 'text-white' : 'text-black'"
@@ -122,7 +122,7 @@
       </table>
     </div>
 
-    <div class="flex flex-col gap-3 p-5 shadow-md rounded-xl">
+    <div class="flex flex-col gap-3 w-full md:w-fit md:min-w-[25rem] p-5 shadow-md rounded-xl">
       <h1 class="font-semibold text-2xl">Order Summary</h1>
       <p class="text-xl">Specific instructions</p>
       <p class="bg-gray-200 px-5 py-1 border">

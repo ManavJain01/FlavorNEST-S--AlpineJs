@@ -1,4 +1,4 @@
-<div x-data="{ orders : fetchOrders() }" class="flex gap-5">
+<div x-data="{ orders : fetchOrders() }" class="flex flex-wrap gap-5">
   <!-- Side Navbar -->
   <ul class="flex flex-col top-0 w-[20rem]">
     <li
@@ -123,7 +123,7 @@
             <img
               :src="food.items[0]?.img || ''"
               alt="Chicken Biryani"
-              class="w-full h-40 object-cover"
+              class="w-full h-20 md:h-40 object-cover"
             />
   
             <!-- Order Details -->
