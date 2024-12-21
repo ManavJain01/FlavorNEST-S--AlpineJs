@@ -702,6 +702,10 @@ video {
   z-index: 20;
 }
 
+.z-\[999999\] {
+  z-index: 999999;
+}
+
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -918,6 +922,10 @@ video {
   width: 9rem;
 }
 
+.w-\[calc\(100\%\/1\)\] {
+  width: calc(100% / 1);
+}
+
 .w-\[calc\(100\%\/2\)\] {
   width: calc(100% / 2);
 }
@@ -1017,6 +1025,10 @@ video {
 
 .gap-1 {
   gap: 0.25rem;
+}
+
+.gap-16 {
+  gap: 4rem;
 }
 
 .gap-2 {
@@ -1726,6 +1738,10 @@ input[type="number"] {
 }
 
 @media (min-width: 640px) {
+  .sm\:w-\[calc\(100\%\/3\)\] {
+    width: calc(100% / 3);
+  }
+
   .sm\:w-\[calc\(100\%\/5\)\] {
     width: calc(100% / 5);
   }
@@ -1763,6 +1779,10 @@ input[type="number"] {
 
   .md\:w-\[40rem\] {
     width: 40rem;
+  }
+
+  .md\:w-\[calc\(100\%\/5\)\] {
+    width: calc(100% / 5);
   }
 
   .md\:w-\[calc\(100\%\/9\)\] {

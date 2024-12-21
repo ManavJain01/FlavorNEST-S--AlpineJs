@@ -4,27 +4,147 @@
       foods: await fetchProducts(),
     }"
     x-show="!loading"
+    class="flex flex-col gap-16"
   >
-    <h1 class="text-2xl font-bold mt-0 py-2">Latest and Greatest</h1>
-    <ul class="flex flex-wrap gap-5 mt-5">
-      <template x-for="food in foods" :key="food.id">
-        <li
-          @click="viewProduct(food)"
-          class="mt-2 p-4 border rounded-xl cursor-pointer"
-        >
-          <img
-            :src="food.img || ''"
-            alt="product image"
-            class="h-[15rem] w-[17rem] rounded-xl"
-          />
-          <h2 class="text-sm font-bold" x-text="food.item"></h2>
-          <p class="text-xs text-gray-500" x-text="food.vendor"></p>
-          <p class="text-orange-600 font-medium">
-            ₹ <span x-text="food.price"></span>
-          </p>
-        </li>
-      </template>
-    </ul>
+    <!-- Latest and Greatest -->
+    <div class="flex flex-col gap-3">
+      <h1 class="text-2xl font-bold mt-0 py-2">Latest and Greatest</h1>
+  
+      <!-- Food Slider -->
+      <div x-data="{ sliderCurrentIndex: sliderCurrentIndex, slideWidth: slideWidth, prevSlide: prevSlide, nextSlide: nextSlide }" class="relative w-full overflow-hidden">
+        <ul class="tracking-wider text-sm text-gray-500 flex gap-5 px-10 py-2 transition-transform duration-300"
+          :style="{ transform: `translateX(-${sliderCurrentIndex * slideWidth}%)` }">
+          <!-- Image Items -->
+          <template x-for="item in foods" :key="item.id">
+            <li @click="viewProduct(food)" class="w-[calc(100%/1)] sm:w-[calc(100%/3)] md:w-[calc(100%/5)] flex-shrink-0 flex flex-col items-center gap-2">
+              <img
+                :src="item.img || ''"
+                alt="Food image"
+                class="h-[15rem] w-[17rem] rounded-xl"
+              />
+              <h2 class="text-sm font-bold" x-text="item.item"></h2>
+              <p class="text-xs text-gray-500" x-text="item.vendor"></p>
+              <p class="text-orange-600 font-medium">
+                ₹ <span x-text="item.price"></span>
+              </p>
+            </li>
+          </template>
+        </ul>
+  
+        <!-- Navigation Buttons -->
+        <button @click="prevSlide" :class="darkMode ? 'bg-black' : 'bg-white'" class="absolute top-1/2 left-2 transform -translate-y-1/2 px-2 py-1 rounded-full">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button @click="nextSlide" :class="darkMode ? 'bg-black' : 'bg-white'" class="absolute top-1/2 right-4 transform -translate-y-1/2 px-2 py-1 rounded-full">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Offers BONANZA -->
+    <div class="flex flex-col gap-3">
+      <h1 class="text-2xl font-bold mt-0 py-2">Offers BONANZA</h1>
+  
+      <!-- Food Slider -->
+      <div x-data="{ sliderCurrentIndex: sliderCurrentIndex, slideWidth: slideWidth, prevSlide: prevSlide, nextSlide: nextSlide }" class="relative w-full overflow-hidden">
+        <ul class="tracking-wider text-sm text-gray-500 flex gap-5 px-10 py-2 transition-transform duration-300"
+          :style="{ transform: `translateX(-${sliderCurrentIndex * slideWidth}%)` }">
+          <!-- Image Items -->
+          <template x-for="item in foods" :key="item.id">
+            <li @click="viewProduct(food)" class="w-[calc(100%/1)] sm:w-[calc(100%/3)] md:w-[calc(100%/5)] flex-shrink-0 flex flex-col items-center gap-2">
+              <img
+                :src="item.img || ''"
+                alt="Food image"
+                class="h-[15rem] w-[17rem] rounded-xl"
+              />
+              <h2 class="text-sm font-bold" x-text="item.item"></h2>
+              <p class="text-xs text-gray-500" x-text="item.vendor"></p>
+              <p class="text-orange-600 font-medium">
+                ₹ <span x-text="item.price"></span>
+              </p>
+            </li>
+          </template>
+        </ul>
+  
+        <!-- Navigation Buttons -->
+        <button @click="prevSlide" :class="darkMode ? 'bg-black' : 'bg-white'" class="absolute top-1/2 left-2 transform -translate-y-1/2 px-2 py-1 rounded-full">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button @click="nextSlide" :class="darkMode ? 'bg-black' : 'bg-white'" class="absolute top-1/2 right-4 transform -translate-y-1/2 px-2 py-1 rounded-full">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Selling HOT on TOP -->
+    <div class="flex flex-col gap-3">
+      <h1 class="text-2xl font-bold mt-0 py-2">Selling HOT on TOP</h1>
+  
+      <!-- Food Slider -->
+      <div x-data="{ sliderCurrentIndex: sliderCurrentIndex, slideWidth: slideWidth, prevSlide: prevSlide, nextSlide: nextSlide }" class="relative w-full overflow-hidden">
+        <ul class="tracking-wider text-sm text-gray-500 flex gap-5 px-10 py-2 transition-transform duration-300"
+          :style="{ transform: `translateX(-${sliderCurrentIndex * slideWidth}%)` }">
+          <!-- Image Items -->
+          <template x-for="item in foods" :key="item.id">
+            <li @click="viewProduct(food)" class="w-[calc(100%/1)] sm:w-[calc(100%/3)] md:w-[calc(100%/5)] flex-shrink-0 flex flex-col items-center gap-2">
+              <img
+                :src="item.img || ''"
+                alt="Food image"
+                class="h-[15rem] w-[17rem] rounded-xl"
+              />
+              <h2 class="text-sm font-bold" x-text="item.item"></h2>
+              <p class="text-xs text-gray-500" x-text="item.vendor"></p>
+              <p class="text-orange-600 font-medium">
+                ₹ <span x-text="item.price"></span>
+              </p>
+            </li>
+          </template>
+        </ul>
+  
+        <!-- Navigation Buttons -->
+        <button @click="prevSlide" :class="darkMode ? 'bg-black' : 'bg-white'" class="absolute top-1/2 left-2 transform -translate-y-1/2 px-2 py-1 rounded-full">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button @click="nextSlide" :class="darkMode ? 'bg-black' : 'bg-white'" class="absolute top-1/2 right-4 transform -translate-y-1/2 px-2 py-1 rounded-full">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Gourmet Kings and Queens -->
+    <div class="flex flex-col gap-3">
+      <h1 class="text-2xl font-bold mt-0 py-2">Gourmet Kings and Queens</h1>
+  
+      <!-- Food Slider -->
+      <div x-data="{ sliderCurrentIndex: sliderCurrentIndex, slideWidth: slideWidth, prevSlide: prevSlide, nextSlide: nextSlide }" class="relative w-full overflow-hidden">
+        <ul class="tracking-wider text-sm text-gray-500 flex gap-5 px-10 py-2 transition-transform duration-300"
+          :style="{ transform: `translateX(-${sliderCurrentIndex * slideWidth}%)` }">
+          <!-- Image Items -->
+          <template x-for="item in foods" :key="item.id">
+            <li @click="viewProduct(food)" class="w-[calc(100%/1)] sm:w-[calc(100%/3)] md:w-[calc(100%/5)] flex-shrink-0 flex flex-col items-center gap-2">
+              <img
+                :src="item.img || ''"
+                alt="Food image"
+                class="h-[15rem] w-[17rem] rounded-xl"
+              />
+              <h2 class="text-sm font-bold" x-text="item.item"></h2>
+              <p class="text-xs text-gray-500" x-text="item.vendor"></p>
+              <p class="text-orange-600 font-medium">
+                ₹ <span x-text="item.price"></span>
+              </p>
+            </li>
+          </template>
+        </ul>
+  
+        <!-- Navigation Buttons -->
+        <button @click="prevSlide" :class="darkMode ? 'bg-black' : 'bg-white'" class="absolute top-1/2 left-2 transform -translate-y-1/2 px-2 py-1 rounded-full">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button @click="nextSlide" :class="darkMode ? 'bg-black' : 'bg-white'" class="absolute top-1/2 right-4 transform -translate-y-1/2 px-2 py-1 rounded-full">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
   </div>
 
   <div
