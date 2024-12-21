@@ -77,3 +77,25 @@ input[type="number"] {
     background: linear-gradient(90deg, #e76f0a 0%, #e76f0a 50%, #e76f0a 50%, #e76f0a 100%);
   }
 }
+
+
+
+
+
+
+/* Optional for better visuals */
+.slider-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-item {
+  flex: 0 0 calc(100% / 9); /* Each image takes up 1/9th of the slider width */
+}
+
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
