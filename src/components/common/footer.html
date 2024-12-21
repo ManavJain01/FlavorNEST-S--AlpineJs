@@ -1,20 +1,33 @@
-<div
-  class="py-3 flex flex-col gap-5"
->
-  <div class="flex flex-wrap items-center justify-start md:justify-around gap-5 px-5">
+<div class="py-3 flex flex-col gap-5">
+  <div
+    class="flex flex-wrap items-center justify-center md:justify-around gap-5 px-5"
+  >
     <!-- First Section -->
-    <section class="flex flex-col gap-3 items-start">
+    <section class="flex flex-col gap-3 items-center sm:items-start">
       <h1 class="font-bold text-xl">Quick Links</h1>
-      <button @click="currentPage = 'careers'" class="text-gray-500">Careers</button>
-      <button @click="currentPage = 'vendor_registration'" class="text-gray-500">Vendor Registration</button>
-      <button @click="currentPage = 'privacy_policies'" class="text-gray-500">Privacy Policies</button>
-      <button @click="currentPage = 'terms_conditions'" class="text-gray-500">Terms and Conditions</button>
-      <button @click="currentPage = 'home'" class="text-gray-500">FoodNEST(S)</button>
+      <button @click="currentPage = 'careers'" class="text-gray-500">
+        Careers
+      </button>
+      <button
+        @click="currentPage = 'vendor_registration'"
+        class="text-gray-500"
+      >
+        Vendor Registration
+      </button>
+      <button @click="currentPage = 'privacy_policies'" class="text-gray-500">
+        Privacy Policies
+      </button>
+      <button @click="currentPage = 'terms_conditions'" class="text-gray-500">
+        Terms and Conditions
+      </button>
+      <button @click="currentPage = 'home'" class="text-gray-500">
+        FoodNEST(S)
+      </button>
       <button @click="currentPage = 'faqs'" class="text-gray-500">FAQ's</button>
     </section>
 
     <!-- Second Section -->
-    <section class="flex flex-col gap-3">
+    <section class="flex flex-col gap-3 items-center sm:items-start">
       <h1 class="font-bold text-xl">Contact Us</h1>
       <p class="text-gray-500">
         <i class="text-xl fa-solid fa-location-dot"></i>
@@ -35,8 +48,12 @@
       <h1 class="font-bold text-xl">Find Our App On Mobile</h1>
 
       <div class="flex">
-        <img src="/assets/images/App-Store.png" alt="app store" class="w-32">
-        <img src="/assets/images/google-play.png" alt="play store" class="w-32">
+        <img src="/assets/images/App-Store.png" alt="app store" class="w-32" />
+        <img
+          src="/assets/images/google-play.png"
+          alt="play store"
+          class="w-32"
+        />
       </div>
     </section>
 
@@ -45,10 +62,22 @@
       <!-- Payment Methods -->
       <h1 class="font-bold text-xl">Payment Methods</h1>
       <div class="flex items-center gap-1">
-        <img src="https://foodnests.com/assets/images/cards/visa.png" alt="payment links">
-        <img src="https://foodnests.com/assets/images/cards/american-express.png" alt="payment links">
-        <img src="https://foodnests.com/assets/images/cards/master.png" alt="payment links">
-        <img src="https://foodnests.com/assets/images/cards/mobile-money.png" alt="payment links">
+        <img
+          src="https://foodnests.com/assets/images/cards/visa.png"
+          alt="payment links"
+        />
+        <img
+          src="https://foodnests.com/assets/images/cards/american-express.png"
+          alt="payment links"
+        />
+        <img
+          src="https://foodnests.com/assets/images/cards/master.png"
+          alt="payment links"
+        />
+        <img
+          src="https://foodnests.com/assets/images/cards/mobile-money.png"
+          alt="payment links"
+        />
       </div>
 
       <!-- Keep In Touch -->
