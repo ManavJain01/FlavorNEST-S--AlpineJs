@@ -36,7 +36,10 @@
           }
         }"
         ></div>
-        <i :class="darkMode ? 'bg-black' : 'bg-white'" class="fa-solid text-gray-400 py-2 pl-2 px-5 fa-caret-down -ml-10"></i>
+        <i
+          :class="darkMode ? 'bg-black' : 'bg-white'"
+          class="fa-solid text-gray-400 py-2 pl-2 px-5 fa-caret-down -ml-10"
+        ></i>
         <p>|</p>
         <i class="fa fa-search text-default text-sm mx-2"></i>
         <!-- Search Functionality -->
@@ -52,7 +55,8 @@
           x-if="Array.isArray(searchedItems) && searchedItems.length > 0"
         >
           <div
-            class="absolute top-[52px] right-0 bg-white flex flex-col gap-2 w-[18rem] max-h-[10rem] py-2 shadow-xl shadow-gray-600 rounded-xl overflow-y-scroll"
+            :class="darkMode ? 'bg-black' : 'bg-white'"
+            class="absolute z-20 top-[52px] right-0 flex flex-col gap-2 w-[18rem] max-h-[10rem] py-2 shadow-xl shadow-gray-600 rounded-xl overflow-y-scroll"
           >
             <template x-for="item in searchedItems">
               <div
@@ -235,78 +239,95 @@
 
     <!-- Ham Menu Icon -->
     <!-- Ham Menu Icon -->
-  <button @click="openNavbar = !openNavbar" aria-expanded="openNavbar" aria-controls="navbar-menu">
-    <i class="fa-solid fa-bars"></i>
-  </button>
-
-  <template x-if="openNavbar">
-    <nav
-      id="navbar-menu"
-      :class="darkMode ? 'bg-black shadow-gray-700' : 'bg-white'"
-      class="absolute -top-5 -right-5 text-xs flex flex-col gap-3 h-lvh w-[15rem] px-5 py-2 shadow-md"
+    <button
+      @click="openNavbar = !openNavbar"
+      aria-expanded="openNavbar"
+      aria-controls="navbar-menu"
     >
-      <!-- Close Button -->
-      <button @click="openNavbar = false" class="ml-auto" type="button">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+      <i class="fa-solid fa-bars"></i>
+    </button>
 
-      <!-- Nav Options -->
-      <div class="flex flex-col gap-2">
-        <!-- If Not Login -->
-        <template x-if="!isLogin">
-          <div class="flex flex-col gap-2">
-            <button @click="currentPage = 'login'" class="mr-auto" type="button">
-              Login
-            </button>
-            <hr />
-            <button @click="currentPage = 'register'" class="mr-auto" type="button">
-              Register
-            </button>
-          </div>
-        </template>
+    <template x-if="openNavbar">
+      <nav
+        id="navbar-menu"
+        :class="darkMode ? 'bg-black shadow-gray-700' : 'bg-white'"
+        class="absolute -top-5 -right-5 text-xs flex flex-col gap-3 h-lvh w-[15rem] px-5 py-2 shadow-md"
+      >
+        <!-- Close Button -->
+        <button @click="openNavbar = false" class="ml-auto" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
 
-        <!-- If Login -->
-        <template x-if="isLogin">
-          <div class="flex flex-col gap-2">
-            <button @click="currentPage = 'user_profile'" class="mr-auto" type="button">
-              Profile
-            </button>
-            <hr />
-            <button @click="logout()" class="mr-auto" type="button">Logout</button>
-          </div>
-        </template>
-        <hr />
-        <button class="mr-auto" type="button">Wishlists</button>
-        <hr />
-        <button @click="currentPage = 'cart'" class="mr-auto">
-          Viewcart
-        </button>
-        <hr />
-        <button @click="currentPage = 'careers'" class="mr-auto">
-          Careers
-        </button>
-        <hr />
-        <button @click="currentPage = 'vendor_registration'" class="mr-auto">
-          Vendor Registration
-        </button>
-        <hr />
-        <button @click="currentPage = 'privacy_policies'" class="mr-auto">
-          Privacy Policies
-        </button>
-        <hr />
-        <button @click="currentPage = 'terms_conditions'" class="mr-auto">
-          Terms And Conditions - FoodNEST(S)
-        </button>
-        <hr />
-        <button @click="currentPage = 'faqs'" class="mr-auto">FAQ's</button>
-        <hr />
-        <button class="mr-auto">En Language</button>
-        <hr />
-        <button class="mr-auto">INR Currency</button>
-      </div>
-    </nav>
-  </template>
+        <!-- Nav Options -->
+        <div class="flex flex-col gap-2">
+          <!-- If Not Login -->
+          <template x-if="!isLogin">
+            <div class="flex flex-col gap-2">
+              <button
+                @click="currentPage = 'login'"
+                class="mr-auto"
+                type="button"
+              >
+                Login
+              </button>
+              <hr />
+              <button
+                @click="currentPage = 'register'"
+                class="mr-auto"
+                type="button"
+              >
+                Register
+              </button>
+            </div>
+          </template>
 
+          <!-- If Login -->
+          <template x-if="isLogin">
+            <div class="flex flex-col gap-2">
+              <button
+                @click="currentPage = 'user_profile'"
+                class="mr-auto"
+                type="button"
+              >
+                Profile
+              </button>
+              <hr />
+              <button @click="logout()" class="mr-auto" type="button">
+                Logout
+              </button>
+            </div>
+          </template>
+          <hr />
+          <button class="mr-auto" type="button">Wishlists</button>
+          <hr />
+          <button @click="currentPage = 'cart'" class="mr-auto">
+            Viewcart
+          </button>
+          <hr />
+          <button @click="currentPage = 'careers'" class="mr-auto">
+            Careers
+          </button>
+          <hr />
+          <button @click="currentPage = 'vendor_registration'" class="mr-auto">
+            Vendor Registration
+          </button>
+          <hr />
+          <button @click="currentPage = 'privacy_policies'" class="mr-auto">
+            Privacy Policies
+          </button>
+          <hr />
+          <button @click="currentPage = 'terms_conditions'" class="mr-auto">
+            Terms And Conditions - FoodNEST(S)
+          </button>
+          <hr />
+          <button @click="currentPage = 'faqs'" class="mr-auto">FAQ's</button>
+          <hr />
+          <button class="mr-auto">En Language</button>
+          <hr />
+          <button class="mr-auto">INR Currency</button>
+        </div>
+      </nav>
+    </template>
   </div>
 
   <div id="navbar" x-init="navbarComponent()" x-html="navbarContent"></div>
