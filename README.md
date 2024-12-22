@@ -15,10 +15,13 @@ FoodNests is a modern food ordering web application developed using **Alpine.js*
 - [Comparison: Alpine.js vs React](#comparison-alpinejs-vs-react)
 - [Advantages of Alpine.js](#advantages-of-alpinejs)
 - [Advantages of Firebase with Alpine.js](#advantages-of-firebase-with-alpinejs)
+- [Progressive Web App (PWA) Features](#progressive-web-app-pwa-features)
+- [APK Conversion Using PWA Builder](#apk-conversion-using-pwa-builder)
 - [Setup and Installation](#setup-and-installation)
 - [Screenshots](#screenshots)
-- [Demo Video](#demo-video)
 - [Conclusion](#conclusion)
+
+
 
 ---
 
@@ -187,28 +190,65 @@ Alpine.js is a lightweight JavaScript framework designed for minimal scripting n
 3. Install dependencies:
 
    ```bash
-   npm install
+   npm run tail
    ```
 
 4. Run the application:
 
-   ```bash
-   npm start
-   ```
+   run with local server or live server 
 
 ---
 
 ## Screenshots
 
-*Insert screenshots here.*
+## Home page
+![Home page](assets/images/demo/Home.png)
+
+## Product Card
+![Product card ](assets/images/demo/ProductCard.png)
+
+## Cart 
+![Cart page ](assets/images/demo/Cart.png)
+
+----
+### Progressive Web App (PWA) Features
+
+This project is designed to be a **Progressive Web App (PWA)**, which enhances the user experience by providing app-like features on web platforms. Below are the key PWA features integrated into the project:
+
+1. **Offline Availability**:  
+   Users can access core functionalities and view previously loaded data even without an active internet connection, thanks to the service worker caching mechanism.
+
+2. **Add to Home Screen (A2HS)**:  
+   The app prompts users to install it on their devices, enabling a native app-like experience directly from the home screen without downloading from an app store.
+
+3. **Fast Loading Times**:  
+   Leveraging caching and preloading strategies, the app delivers faster load times, ensuring smooth and seamless performance.
+
+4. **Responsive Design**:  
+   The app is fully optimized for devices of all screen sizes, providing a consistent and user-friendly interface across desktops, tablets, and mobile devices.
+
+5. **Secure**:  
+   Served over HTTPS, ensuring data integrity and user privacy.
+---
+---
+
+### APK Conversion Using PWA Builder
+
+To enhance accessibility, this PWA was converted into an **APK** (Android Package) using [PWA Builder](https://www.pwabuilder.com/). PWA Builder provides an easy way to package a PWA into a native-like mobile app for Android.  
+
+#### Steps to Convert PWA to APK:
+1. Build the PWA with all necessary features (offline support, A2HS, etc.).
+2. Use PWA Builder:
+   - Upload the PWA's URL to [PWA Builder](https://www.pwabuilder.com/).
+   - Follow the wizard to configure the app package.
+3. Download the generated APK file.
+4. Test the APK on Android devices to ensure smooth functionality.  
+
+By providing both a web-based experience and an APK for Android users, this project ensures maximum reach and usability.
 
 ---
 
-## Demo Video
 
-*Insert video link here.*
-
----
 
 ## Conclusion
 
