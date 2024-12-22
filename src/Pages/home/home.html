@@ -23,18 +23,24 @@
           <template x-for="item in foods" :key="item.id">
             <li
               @click="viewProduct(item)"
-              class="w-[calc(100%/1)] sm:w-[calc(100%/3)] md:w-[calc(100%/5)] flex-shrink-0 flex flex-col items-center gap-2"
+              class="w-[calc(100%/1)] sm:w-[calc(100%/3)] md:w-[calc(100%/5)] flex-shrink-0 flex flex-col gap-2"
             >
               <img
                 :src="item.img || ''"
                 alt="Food image"
                 class="h-[15rem] w-[17rem] rounded-xl"
               />
-              <h2 class="text-sm font-bold" x-text="item.item"></h2>
-              <p class="text-xs text-gray-500" x-text="item.vendor"></p>
-              <p class="text-orange-600 font-medium">
-                ₹ <span x-text="item.price"></span>
-              </p>
+              <div class="flex px-2 pb-3 flex-col justify-start">
+                <h2 class="text-sm font-bold" x-text="item.item"></h2>
+                <p class="text-xs text-gray-500" x-text="item.vendor"></p>
+                <p class="text-orange-600 font-medium">
+                  ₹
+                  <span
+                    class="font-semibold text-base"
+                    x-text="item.price"
+                  ></span>
+                </p>
+              </div>
             </li>
           </template>
         </ul>
@@ -74,18 +80,24 @@
           <template x-for="item in foods" :key="item.id">
             <li
               @click="viewProduct(item)"
-              class="w-[calc(100%/1)] sm:w-[calc(100%/3)] md:w-[calc(100%/5)] flex-shrink-0 flex flex-col items-center gap-2"
+              class="w-[calc(100%/1)] sm:w-[calc(100%/3)] md:w-[calc(100%/5)] flex-shrink-0 flex flex-col gap-2"
             >
               <img
                 :src="item.img || ''"
                 alt="Food image"
                 class="h-[15rem] w-[17rem] rounded-xl"
               />
-              <h2 class="text-sm font-bold" x-text="item.item"></h2>
-              <p class="text-xs text-gray-500" x-text="item.vendor"></p>
-              <p class="text-orange-600 font-medium">
-                ₹ <span x-text="item.price"></span>
-              </p>
+              <div class="flex px-2 pb-3 flex-col justify-start">
+                <h2 class="text-sm font-bold" x-text="item.item"></h2>
+                <p class="text-xs text-gray-500" x-text="item.vendor"></p>
+                <p class="text-orange-600 font-medium">
+                  ₹
+                  <span
+                    class="font-semibold text-base"
+                    x-text="item.price"
+                  ></span>
+                </p>
+              </div>
             </li>
           </template>
         </ul>
@@ -132,11 +144,17 @@
                 alt="Food image"
                 class="h-[15rem] w-[17rem] rounded-xl"
               />
-              <h2 class="text-sm font-bold" x-text="item.item"></h2>
-              <p class="text-xs text-gray-500" x-text="item.vendor"></p>
-              <p class="text-orange-600 font-medium">
-                ₹ <span x-text="item.price"></span>
-              </p>
+              <div class="flex px-2 pb-3 flex-col justify-start">
+                <h2 class="text-sm font-bold" x-text="item.item"></h2>
+                <p class="text-xs text-gray-500" x-text="item.vendor"></p>
+                <p class="text-orange-600 font-medium">
+                  ₹
+                  <span
+                    class="font-semibold text-base"
+                    x-text="item.price"
+                  ></span>
+                </p>
+              </div>
             </li>
           </template>
         </ul>
@@ -176,18 +194,24 @@
           <template x-for="item in foods" :key="item.id">
             <li
               @click="viewProduct(item)"
-              class="w-[calc(100%/1)] sm:w-[calc(100%/3)] md:w-[calc(100%/5)] flex-shrink-0 flex flex-col items-center gap-2"
+              class="w-[calc(100%/1)] sm:w-[calc(100%/3)] border md:w-[calc(100%/5)] rounded-xl shadow-sm flex-shrink-0 flex flex-col gap-2"
             >
               <img
                 :src="item.img || ''"
                 alt="Food image"
                 class="h-[15rem] w-[17rem] rounded-xl"
               />
-              <h2 class="text-sm font-bold" x-text="item.item"></h2>
-              <p class="text-xs text-gray-500" x-text="item.vendor"></p>
-              <p class="text-orange-600 font-medium">
-                ₹ <span x-text="item.price"></span>
-              </p>
+              <div class="flex px-2 pb-3 flex-col justify-start">
+                <h2 class="text-sm font-bold" x-text="item.item"></h2>
+                <p class="text-xs text-gray-500" x-text="item.vendor"></p>
+                <p class="text-orange-600 font-medium">
+                  ₹
+                  <span
+                    class="font-semibold text-base"
+                    x-text="item.price"
+                  ></span>
+                </p>
+              </div>
             </li>
           </template>
         </ul>
