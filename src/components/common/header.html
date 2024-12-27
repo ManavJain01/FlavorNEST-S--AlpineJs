@@ -10,8 +10,8 @@
       <!-- Logo -->
       <button @click="currentPage = 'home'">
         <img
-          class="min-w-[9rem] w-[9rem]"
-          src="./assets/images/logo.png"
+          class="w-[4rem]"
+          src="../../../assets/images/logo.png"
           alt=""
         />
       </button>
@@ -23,7 +23,7 @@
         <i class="fa-solid fa-location-dot text-default"></i>
         <!-- Location -->
         <input
-          placeholder="Lucknow, Uttar Pradesh, India"
+          placeholder="Raipur, Madhya Pradesh, India"
           class="text-xs w-[50%] md:w-[15rem] px-2 py-4 outline-none"
           :class="darkMode ? 'bg-black text-white' : 'bg-white text-black'"
           type="text"
@@ -104,7 +104,7 @@
         x-show="open"
         @click.outside="open = false"
         x-transition
-        class="absolute w-[170px] shadow-md top-[3rem] right-[20rem] mt-2 rounded border z-10"
+        class="absolute w-[170px] shadow-md top-[4rem] right-[20rem] mt-2 rounded border z-10"
         :class="darkMode ? 'bg-black' : 'bg-white'"
       >
         <li
@@ -139,13 +139,13 @@
           </button>
         </li>
         <li
-          class="py-3 /px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
+          class="py-3 px-2 hover:border-l-4 hover:border-[#e76f0a] transition-all hover:bg-gradient-to-r hover:from-orange-300 hover:to-orange-100"
         >
           <button
             @click="currentPage = 'terms_conditions'"
-            class="items-center"
+            class="text-start"
           >
-            Term and Conditions-FoodNEST(S)
+            Term and Conditions-FlavorNEST(S)
           </button>
         </li>
         <li
@@ -167,7 +167,7 @@
         x-show="openAccount"
         @click.outside="openAccount = false"
         x-transition
-        class="absolute w-[130px] shadow-md right-[2rem] top-12 mt-2 rounded border z-10"
+        class="absolute w-[130px] shadow-md right-[2rem] top-16 mt-2 rounded border z-10"
         :class="darkMode ? 'bg-black' : 'bg-white'"
       >
         <!-- If Not LoggedIn -->
@@ -237,7 +237,6 @@
       </template>
     </button>
 
-    <!-- Ham Menu Icon -->
     <!-- Ham Menu Icon -->
     <button
       @click="openNavbar = !openNavbar"
@@ -317,7 +316,7 @@
           </button>
           <hr />
           <button @click="currentPage = 'terms_conditions'" class="mr-auto">
-            Terms And Conditions - FoodNEST(S)
+            Terms And Conditions - FlavorNEST(S)
           </button>
           <hr />
           <button @click="currentPage = 'faqs'" class="mr-auto">FAQ's</button>
